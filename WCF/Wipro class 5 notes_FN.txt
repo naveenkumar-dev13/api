@@ -1,0 +1,695 @@
+CRUD
+=====
+DDL:
+Table:
+ 
+Src:
+	Department
+		dno,dname,loc,...
+        Employee	
+		eid,name,salary,dno,...
+Target:
+DepartmentTB
+    |DNO	|DNAME			|LOC		|
+   =======================================
+    |10	| IT				|Bangalore	|
+    |20	|Sales			|Chennai		|
+    |30	|Training			|Pune		|
+    |40	|Admin			|Kolkata		|
+ 
+EmployeeTB
+	| EID	|	NAME	|SALARY		|DNO	|
+        ==============================================
+	|100		| John		| 30000		|10		|
+	|200	| Johns		| 34000		|10		|
+	|300	| Johncy		|20000		|		|
+ 
+Create table tableName
+(
+	col1Name datatype not null default val,
+	col1Name datatype,
+        ...
+        col1Name datatype
+)
+data type:
+  numeric
+	Number
+	Number(p,s)
+  date
+	date
+  character
+        Char()
+        Varchar()
+	Varchar2()
+ 
+Create:
+Create table DepartmentTB
+(
+DNO	Number,
+DNAME	Varchar(20),
+LOC		Varchar(30)
+)
+ 
+To see the structure of DepartmentTB
+-----------------------------------------
+SQL> desc departmenttb
+Name                                      Null?    Type
+----------------------------------------- -------- ----------------------------
+DNO                                                NUMBER
+DNAME                                              VARCHAR2(20)
+LOC                                                VARCHAR2(30)
+ 
+Alter:
+	add col/contraint
+	alter/modify col
+	drop
+ 
+Alter table tableName  add constraint constrName constrType:
+ 
+Alter table DepartmentTB  add constraint pk_dno primary key(DNO)
+*************
+SQL> Alter table DepartmentTB add constraint pk_dno primary key(DNO);
+ 
+Table altered.
+ 
+SQL> desc DepartmentTB
+Name                                      Null?    Type
+----------------------------------------- -------- ----------------------------
+DNO                                       NOT NULL NUMBER
+DNAME                                              VARCHAR2(20)
+LOC                                                VARCHAR2(30)
+*************************
+ 
+Drop:
+	drop table tableName
+ 
+Truncate
+.	truncate table tableName
+ 
+has context menu
+
+
+[1:14 PM] Unknown User
+CRUD
+
+=====
+
+DDL:
+
+Table:
+ 
+Src:
+
+	Department
+
+		dno,dname,loc,...
+
+        Employee	
+
+		eid,name,salary,dno,...
+
+Target:
+
+DepartmentTB
+
+    |DNO	|DNAME			|LOC		|
+
+   =======================================
+
+    |10	| IT				|Bangalore	|
+
+    |20	|Sales			|Chennai		|
+
+    |30	|Training			|Pune		|
+
+    |40	|Admin			|Kolkata		|
+ 
+EmployeeTB
+
+	| EID	|	NAME	|SALARY		|DNO	|
+
+        ==============================================
+
+	|100		| John		| 30000		|10		|
+
+	|200	| Johns		| 34000		|10		|
+
+	|300	| Johncy		|20000		|		|
+ 
+Create table tableName
+
+(
+
+	col1Name datatype not null default val,
+
+	col1Name datatype,
+
+        ...
+
+        col1Name datatype
+
+)
+
+data type:
+
+  numeric
+
+	Number
+
+	Number(p,s)
+
+  date
+
+	date
+
+  character
+
+        Char()
+
+        Varchar()
+
+	Varchar2()
+ 
+Create:
+
+Create table DepartmentTB
+
+(
+
+DNO	Number,
+
+DNAME	Varchar(20),
+
+LOC		Varchar(30)
+
+)
+ 
+To see the structure of DepartmentTB
+
+-----------------------------------------
+
+SQL> desc departmenttb
+
+Name                                      Null?    Type
+
+----------------------------------------- -------- ----------------------------
+
+DNO                                                NUMBER
+
+DNAME                                              VARCHAR2(20)
+
+LOC                                                VARCHAR2(30)
+ 
+Alter:
+
+	add col/contraint
+
+	alter/modify col
+
+	drop
+ 
+Alter table tableName  add constraint constrName constrType:
+ 
+Alter table DepartmentTB  add constraint pk_dno primary key(DNO)
+
+*************
+
+SQL> Alter table DepartmentTB add constraint pk_dno primary key(DNO);
+ 
+Table altered.
+ 
+SQL> desc DepartmentTB
+
+Name                                      Null?    Type
+
+----------------------------------------- -------- ----------------------------
+
+DNO                                       NOT NULL NUMBER
+
+DNAME                                              VARCHAR2(20)
+
+LOC                                                VARCHAR2(30)
+
+*************************
+ 
+Drop:
+
+	drop table tableName
+ 
+Truncate
+
+.	truncate table tableName
+ 
+[1:15 PM] Unknown User
+Insert
+ 
+	insert into tableName values(val1,'val2',....)
+
+	insert into tableName(col1,col3,col2,...)  values(val1,val3,'val2',...)
+
+insert into DepartmentTB values(10,'IT','Bangalore');
+
+insert into DepartmentTB values(20,'Sales','Chennai');
+
+insert into DepartmentTB values(30,'Training','Pune');
+
+insert into DepartmentTB values(40,'Admin','Kolkata');
+
+*************
+
+SQL> insert into DepartmentTB values(10,'IT','Bangalore');
+ 
+1 row created.
+ 
+SQL> insert into DepartmentTB values(20,'Sales','Chennai');
+ 
+1 row created.
+ 
+SQL> insert into DepartmentTB values(30,'Training','Pune');
+ 
+1 row created.
+ 
+SQL> insert into DepartmentTB values(40,'Admin','Kolkata');
+ 
+1 row created.
+ 
+ 
+Select
+
+top see all tables in schema
+
+	select * from tab;
+
+Select .....
+
+From 
+
+[Where condn]
+
+[Group By col,..]
+
+[Having condn ]
+
+[Order By col,..
+ 
+commit - save
+
+rollback - undo 
+
+dml
+
+ddl
+ 
+Update:
+
+	Update tableName set col =  newVal;  //all rows
+
+	Update tableName set col= newVal where condn ;  //limited
+ 
+	Update DepartmentTB set loc = Cochin;
+
+**************************************
+
+SQL> Update DepartmentTB set loc = 'Cochin';
+ 
+4 rows updated.
+ 
+SQL> select * from DepartmentTB;
+ 
+       DNO DNAME                LOC
+
+---------- -------------------- ------------------------------
+
+        10 IT                   Cochin
+
+        20 Sales                Cochin
+
+        30 Training             Cochin
+
+        40 Admin                Cochin
+ 
+SQL> rollback;
+ 
+Rollback complete.
+ 
+SQL> select * from DepartmentTB;
+ 
+       DNO DNAME                LOC
+
+---------- -------------------- ------------------------------
+
+        10 IT                   Bangalore
+
+        20 Sales                Chennai
+
+        30 Training             Pune
+
+        40 Admin                Kolkata
+ 
+SQL> Update DepartmentTB set loc = 'Cochin' where dno = 10;
+ 
+1 row updated.
+ 
+SQL> select * from DepartmentTB;
+ 
+       DNO DNAME                LOC
+
+---------- -------------------- ------------------------------
+
+        10 IT                   Cochin
+
+        20 Sales                Chennai
+
+        30 Training             Pune
+
+        40 Admin                Kolkata
+ 
+SQL> commit;
+ 
+Commit complete.
+
+********************************
+ 
+where cond1 and (cond2 or cond3)
+
+where cond1 or cond2
+
+	condn:
+
+               range check => between and, <= 
+
+	       col in(v1,v2...) => col=v1 or col=v2 
+
+		= => equal char/date col = 'val' / col="val"
+
+	       like - pattern match => ''  % / _
+ 
+    name = John
+
+		Johncy
+
+		Smith
+ 
+	where	name like '_o%'  => John and Johncy
+ 
+ 
+Delete
+
+	remove row(s)
+
+	delete from tableName; //all rows
+
+        delete from tableName where cond;  //limited	
+
+[1:15 PM] Unknown User
+Select col as alt_Title ,exp 
+
+From
+
+Where - filter 
+
+Group by - Agg fun - SUM,COUNT,MIN,MAX,AVG...
+
+Having - filter count(col) > val and/or col = val
+
+Order by
+ 
+to_number('123')
+ 
+********************
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id order by 1;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           10 AD_ASST             1
+
+           20 MK_MAN              1
+
+           20 MK_REP              1
+
+           30 PU_CLERK            5
+
+           30 PU_MAN              1
+
+           40 HR_REP              1
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+
+           50 ST_MAN              5
+
+           60 IT_PROG             5
+
+           70 PR_REP              1
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           80 SA_MAN              5
+
+           80 SA_REP             29
+
+           90 AD_PRES             1
+
+           90 AD_VP               2
+
+          100 FI_ACCOUNT          5
+
+          100 FI_MGR              1
+
+          110 AC_ACCOUNT          1
+
+          110 AC_MGR              1
+
+              SA_REP              1
+ 
+20 rows selected.
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id order by 1 desc;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+              SA_REP              1
+
+          110 AC_ACCOUNT          1
+
+          110 AC_MGR              1
+
+          100 FI_ACCOUNT          5
+
+          100 FI_MGR              1
+
+           90 AD_PRES             1
+
+           90 AD_VP               2
+
+           80 SA_MAN              5
+
+           80 SA_REP             29
+
+           70 PR_REP              1
+
+           60 IT_PROG             5
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+
+           50 ST_MAN              5
+
+           40 HR_REP              1
+
+           30 PU_CLERK            5
+
+           30 PU_MAN              1
+
+           20 MK_MAN              1
+
+           20 MK_REP              1
+
+           10 AD_ASST             1
+ 
+20 rows selected.
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id order by 1 ,2 desc;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           10 AD_ASST             1
+
+           20 MK_REP              1
+
+           20 MK_MAN              1
+
+           30 PU_MAN              1
+
+           30 PU_CLERK            5
+
+           40 HR_REP              1
+
+           50 ST_MAN              5
+
+           50 ST_CLERK           20
+
+           50 SH_CLERK           20
+
+           60 IT_PROG             5
+
+           70 PR_REP              1
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           80 SA_REP             29
+
+           80 SA_MAN              5
+
+           90 AD_VP               2
+
+           90 AD_PRES             1
+
+          100 FI_MGR              1
+
+          100 FI_ACCOUNT          5
+
+          110 AC_MGR              1
+
+          110 AC_ACCOUNT          1
+
+              SA_REP              1
+ 
+20 rows selected.
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id order by 1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           10 AD_ASST             1
+
+           20 MK_MAN              1
+
+           20 MK_REP              1
+
+           30 PU_CLERK            5
+
+           30 PU_MAN              1
+
+           40 HR_REP              1
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+
+           50 ST_MAN              5
+
+           60 IT_PROG             5
+
+           70 PR_REP              1
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           80 SA_MAN              5
+
+           80 SA_REP             29
+
+           90 AD_PRES             1
+
+           90 AD_VP               2
+
+          100 FI_ACCOUNT          5
+
+          100 FI_MGR              1
+
+          110 AC_ACCOUNT          1
+
+          110 AC_MGR              1
+
+              SA_REP              1
+ 
+20 rows selected.
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employeeID) > 20 order by 1 ,
+
+2;
+
+select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employeeID) > 20 order by 1 ,2
+
+                                                                                                                  *
+
+ERROR at line 1:
+
+ORA-00904: "EMPLOYEEID": invalid identifier
+ 
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employee_ID) > 20 order by 1
+
+,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           80 SA_REP             29
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employee_ID) > 10   order by
+
+1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+
+           80 SA_REP             29
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employee_ID) > 10  and job_Id='SH_CLERK' order by 1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees where job_id='SH_CLERK' group by department_id,job_id having count(emplo
+
+yee_ID) > 10  order by 1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+ 
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employee_ID) > 10  and job_Id like '%CLERK' order by 1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+ 
+

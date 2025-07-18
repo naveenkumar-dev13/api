@@ -1,0 +1,37 @@
+package simplemavenempproj.service;
+ 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
+ 
+import simplemavenempproj.entity.Employee;
+ 
+public class EmpAdmin {
+ 
+	public static void main(String[] args) {
+		Configuration cfg =new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		SessionFactory factory = cfg.buildSessionFactory();
+		Session session =factory.openSession();
+		Transaction tx = session.beginTransaction();
+		//code for CRUD opearations on employee 
+		Employee emp = new Employee(800,"Johncy",25000);
+		session.save(emp);
+		//emp.setSal(30000);
+		//session.update(emp);
+		//session.delete(emp);
+		//System.out.println("Employee details deleted"); //updated"); //added");
+		//Employee e = session.get(Employee.class, 400);
+		//System.out.println("Employee with ID 400\n" + e);
+		Criteria cr = session.createCriteria(Employee.class);
+		cr.add(Restrictions.ge("sal",20000));
+		cr.list().forEach(System.out::println);
+		tx.commit();
+		session.close();
+		factory.close();
+	}
+ 
+}

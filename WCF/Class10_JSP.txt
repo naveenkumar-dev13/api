@@ -1,0 +1,298 @@
+
+Login.html
+
+</html>
+
+<head>
+
+<style type="text/css">
+
+div {
+
+	position: absolute;
+
+	top: 10px;
+
+	left: 100px;
+
+	width: 250px;
+
+	height: 120px;
+
+	border: 2px sol.id green;
+
+	border-radius: 20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+	<form name="LoginForm" action="LoginServlet">
+
+		<div>
+
+			<br>
+
+			<table>
+
+				<tr>
+
+					<td>User Name</td>
+
+					<td><input type="text" name="uname" /></td>
+
+				</tr>
+
+				<tr>
+
+					<td>Password</td>
+
+					<td><input type="password" name="pwd" /></td>
+
+				</tr>
+
+				<tr>
+
+					<td colspan="2" align="Center"><input type="Submit" value="Login" onClick="return loginValidation()" /></td>
+
+				</tr>
+
+			</table>
+
+		</div>
+
+	</form>
+
+	<script type="text/javascript">
+
+		function loginValidation() {
+
+			var userName = document.LoginForm.uname.value;
+
+			var password = document.LoginForm.pwd.value;
+
+			if (userName == "" || password == "") {
+
+				alert("Fields Can not be empty");
+
+				return false;
+
+			}
+
+		}
+
+	</script>
+
+</body>
+
+</html>
+
+
+
+
+
+LoginServlet.java
+
+
+package com.wipro.servlets;
+ 
+import java.io.IOException;
+
+import java.io.PrintWriter;
+
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+
+import java.sql.PreparedStatement;
+
+import java.sql.ResultSet;
+ 
+import javax.servlet.RequestDispatcher;
+
+import javax.servlet.ServletException;
+
+import javax.servlet.http.HttpServlet;
+
+import javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpServletResponse;
+ 
+/**
+
+* Servlet implementation class LoginServlet
+
+*/
+
+public class LoginServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+ 
+	/**
+
+	 * Default constructor.
+
+	 */
+
+	public LoginServlet() {
+
+		// TODO Auto-generated constructor stub
+
+	}
+ 
+	/**
+
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+
+	 *      response)
+
+	 */
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+
+			throws ServletException, IOException {
+
+		// TODO Auto-generated method stub
+
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		PrintWriter out = response.getWriter();
+
+		String uname = request.getParameter("uname");
+
+		String pwd = request.getParameter("pwd");
+
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver"); // H2 DB
+
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "wcf13may",
+
+					"wcf13may");
+
+			String qry = "select count(uname) usercount from UserTB where uname=? and pwd= ?";
+
+			PreparedStatement ps = con.prepareStatement(qry);
+
+			ps.setString(1, uname);
+
+			ps.setString(2, pwd);
+
+			ResultSet rs = ps.executeQuery();
+
+			int ucount = 0;
+
+			if (rs.next())
+
+				ucount = rs.getInt("usercount");
+ 
+			// if(request.getParameter("uname").equals("Admin") &&
+
+			// request.getParameter("pwd").equals("Admin123"))
+ 
+			String result = "";
+
+			if (ucount == 1) {
+
+				// out. print("<h1>Hello....! Login Success</h1>");
+
+				// response.sendRedirect("Home.html");
+
+				result = "Welcome " + uname;
+
+			} else {
+
+				result = "Invalid username or password";
+
+			}
+
+			request.setAttribute("result", result);
+
+			RequestDispatcher reqDisp = request.getRequestDispatcher("Demo.jsp");
+
+			reqDisp.forward(request, response);
+
+			// }
+
+			// else {
+
+			// out.print("<b>Sorry....! Try again..</b>");
+
+			// response.sendRedirect("Fail.html");
+
+			// }
+
+		} catch (Exception ex) {
+
+			System.out.println(ex.getMessage());
+
+		}
+
+	}
+ 
+	/**
+
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+
+	 *      response)
+
+	 */
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+
+			throws ServletException, IOException {
+
+		// TODO Auto-generated method stub
+
+		doGet(request, response);
+
+	}
+ 
+}
+
+
+
+
+
+
+
+Demo.jsp
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+	pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="ISO-8859-1">
+
+<title>Insert title here</title>
+
+</head>
+
+<body>
+ 
+<%
+
+	String msg = request.getAttribute("result").toString();
+
+if(msg!=null) {
+
+		%>
+
+	<font color=green><b> <%=msg%>
+
+	<% } %>
+
+</body>
+
+</html>

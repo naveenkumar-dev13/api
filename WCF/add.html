@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+</head>
+<body>
+    <h1>Add Student</h1>
+    <form action="AddStudentServlet" method="post">
+        <label for="rno">Roll No:</label>
+        <input type="text" id="rno" name="rno" required><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="score">Score:</label>
+        <input type="text" id="score" name="score" required><br>
+        <input type="submit" value="Add Student">
+    </form>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Student</title>
+</head>
+<body>
+    <h1>Update Student</h1>
+    <form action="UpdateStudentServlet" method="post">
+        <label for="rno">Roll No:</label>
+        <input type="text" id="rno" name="rno" required><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="score">Score:</label>
+        <input type="text" id="score" name="score"><br>
+        <input type="submit" value="Update Student">
+    </form>
+</body>
+</html>
+DeleteStudent.html
+html
+Copy code
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Student</title>
+</head>
+<body>
+    <h1>Delete Student</h1>
+    <form action="DeleteStudentServlet" method="post">
+        <label for="rno">Roll No:</label>
+        <input type="text" id="rno" name="rno" required><br>
+        <input type="submit" value="Delete Student">
+    </form>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Student</title>
+</head>
+<body>
+    <h1>Search Student</h1>
+    <form action="SearchStudentServlet" method="get">
+        <label for="rno">Roll No:</label>
+        <input type="text" id="rno" name="rno" required><br>
+        <input type="submit" value="Search Student">
+    </form>
+</body>
+</html>

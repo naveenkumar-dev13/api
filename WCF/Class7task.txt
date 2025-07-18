@@ -1,0 +1,34 @@
+[1:09 PM] Unknown User
+Task 1: Login.html
+
+			   ________
+
+    User Name:   |________|
+
+			   ________
+
+    Password:      |________|
+ 
+       (Login)
+ 
+Task 2: CSS - style
+
+Task 3: JS - validate the user input
+ 
+		uname and pwd - empty or not
+
+						pop up msg : fields cannot be empty
+
+					 - Admin and Wipro@123
+
+						pop up msg : Login Sucess
+
+						else
+
+						pop up msg : Login Failed
+
+\
+https://tests.mettl.com/authenticateKey/783a1fcf
+https://tests.mettl.com/authenticateKey/783a1fcf
+https://tests.mettl.com/authenticateKey/f390cadf
+https://tests.mettl.com/authenticateKey/87c41143

@@ -1,0 +1,24 @@
+[10:57 AM] 2401058 Rajasekhar Tirupati (Unverified)
+		String input = "I am Raja";
+
+		String words[] = input.split(" ");
+
+		if(words.length >= 2)
+
+			System.out.println(words[1]);
+
+		else
+
+			System.out.println("LESS");
+[10:58 AM] 2401058 Rajasekhar Tirupati (Unverified)
+		String input = "I am Raja";
+
+		String words[] = input.split(" ");
+
+		if(words.length >= 2)
+
+			System.out.println(words[1].toUpperCase());
+
+		else
+
+			System.out.println("LESS");

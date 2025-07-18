@@ -1,0 +1,695 @@
+[1:15 PM] Unknown User
+*********************
+
+EMS
+
+-----
+
+Employee.java
+
+---------------
+
+package emppkg;
+ 
+public class Employee {
+
+	private int eid;
+
+	private String name;
+
+	private int sal;
+
+	public Employee(int eid, String name, int sal) {
+
+		super();
+
+		this.eid = eid;
+
+		this.name = name;
+
+		this.sal = sal;
+
+	}
+
+	public int getEid() {
+
+		return eid;
+
+	}
+
+	public void setEid(int eid) {
+
+		this.eid = eid;
+
+	}
+
+	public String getName() {
+
+		return name;
+
+	}
+
+	public void setName(String name) {
+
+		this.name = name;
+
+	}
+
+	public int getSal() {
+
+		return sal;
+
+	}
+
+	public void setSal(int sal) {
+
+		this.sal = sal;
+
+	}
+
+	@Override
+
+	public String toString() {
+
+		return "Employee [eid=" + eid + ", name=" + name + ", sal=" + sal + "]";
+
+	}
+
+}
+
+---------------
+
+EmpSalException.java
+
+---------------------------
+
+package util;
+ 
+public class EmpSalException extends Exception{  //IS-A type of Exception
+
+	public EmpSalException() {
+
+		super();
+
+	}
+
+	public EmpSalException(String msg) {
+
+		super(msg);
+
+	}
+
+	@Override
+
+	public String toString() {
+
+		return "EmpSalException [Salary less than base salary]";
+
+	}	
+
+}
+
+-------------------
+
+EmpNameException.java
+
+----------------------------
+
+package util;
+ 
+public class EmpNameException extends Exception{
+
+	public EmpNameException() {
+
+		super();
+
+	}
+
+	public EmpNameException(String msg) {
+
+		super(msg);
+
+	}
+
+	@Override
+
+	public String toString() {
+
+		return "EmpNameException [Name must be valid]";
+
+	}	
+
+}
+
+---------------------------------
+
+EmpManager.java
+
+-------------------
+
+package mgrpkg;
+ 
+import java.util.ArrayList;
+ 
+import emppkg.Employee;
+
+import util.EmpNameException;
+
+import util.EmpSalException;
+ 
+public class EmpManager {
+
+	//Employee emps[] = new Employee[5]; // |null|null|null|null|null|
+
+	//static int index = 0;
+
+	ArrayList<Employee> empList = new ArrayList<Employee>();
+
+	final int basesal = 10000;
+ 
+	public boolean addEmp(Employee e) {
+
+		boolean sts = false;
+
+		// code
+
+		//if (index < emps.length) {
+
+			try {
+
+				// validate employee e - sal with min basesal, name not empty/single char/null,
+
+				// ......
+
+				if(e==null)
+
+					throw new NullPointerException("emp is invalid/null"); 
+
+				else if(e.getName() ==null )
+
+					throw new EmpNameException();
+
+				else 	if (e.getSal() < basesal)
+
+					throw new EmpSalException("emp sal less than base salary");
+
+				else {
+
+					//emps[index] = e;
+
+					//index++;
+
+					empList.add(e);
+
+					sts = true;
+
+				}
+
+			} catch (Exception ese) {
+
+				System.out.println(ese.getMessage());// .getMessage());
+
+			}
+
+		//} else {
+
+			//System.out.println(" #EmployeeFull ");
+
+		//}
+
+		return sts;
+
+	}
+ 
+	public boolean UpdateEmp(Employee e) {
+
+		boolean sts = false;
+
+		// code
+
+		return sts;
+
+	}
+ 
+	public boolean deleteEmp(int eid) {
+
+		boolean sts = false;
+
+		// code
+
+		return sts;
+
+	}
+ 
+	public Employee searchEmp(int eid) {
+
+		Employee emp = null;
+
+		// code
+
+		return emp;
+
+	}
+ 
+	public void viewAllEmps() {
+
+		// code
+
+	}
+
+}
+
+-----------------------------
+
+AdminEMS.java
+
+-----------------
+
+package adminpkg;
+ 
+import java.util.Scanner;
+ 
+import emppkg.Employee;
+
+import mgrpkg.EmpManager;
+ 
+public class AdminEMS {
+ 
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		int option = 0, choice = 0;
+
+		EmpManager em = new EmpManager();
+
+		do {
+
+			System.out.println("Menu: \n1-Add Emp 2-Update Emp 3-Delete Emp 4-Search 5-View All Employees");
+
+			option = sc.nextInt();
+
+			switch (option) {
+
+			case 1:// add
+
+				System.out.println("Enter Employee details: EID/NAME/SALARY");
+
+				int eid = sc.nextInt();
+
+				String name = sc.next();
+
+				int sal = sc.nextInt();
+
+				Employee emp = new Employee(eid, name, sal);
+
+				boolean addSts = em.addEmp(emp);
+
+				if (addSts) {
+
+					System.out.println("Employee details added");
+
+				} else {
+
+					System.out.println("Employee details could not be added");
+
+				}
+
+				break;
+
+			case 2:// update
+
+				break;
+
+			case 3:// delete
+
+				break;
+
+			case 4:// search
+
+				System.out.println("Enter EID to search");
+
+				int eidToSearch = sc.nextInt();
+
+				Employee e = em.searchEmp(eidToSearch);
+
+				if(e!=null) {
+
+					System.out.println("Employee details found\n"+e);
+
+				}
+
+				else {
+
+					System.out.println("Employee details could not be found");
+
+				}
+
+				break;
+
+			case 5:// view all
+
+				break;
+
+			default:
+
+				System.out.println("wrong option!!");
+
+			}
+
+			System.out.println("To continue?? YES - 11   NO - 22");
+
+			choice = sc.nextInt();
+
+		} while (choice == 11);
+
+		System.out.println("Thank you");
+
+	}
+
+}
+
+[1:15 PM] Unknown User
+************************
+
+Q) find unique numbers:
+
+int[] n ={1,22,3,4,22,3,4,3,4}
+
+int[] op =
+ 
+logic1:
+
+	compare each and every element with all rest of the element
+
+		for(1 -> 22,3,4)  
+
+	n -> complexity
+ 
+logic2:
+
+	for(
+
+			add
+
+		num -----> set
+
+********************************
+
+Set:
+
+          unordered
+
+HashSet
+
+add()
+
+get() XXXX
+
+size()
+
+[]
+
+iterator
+
+	hasNext()
+
+		next()
+
+		remove()
+
+Tomorrow:
+
+  Set - demo
+ 
+	HashSet
+
+****************
+
+package collnpkg;
+ 
+import java.util.HashSet;
+
+import java.util.Set;
+
+class Emp{
+
+	int eid;
+
+	String name;
+
+	public Emp() {}
+
+	public Emp(int eid, String name) {
+
+		super();
+
+		this.eid = eid;
+
+		this.name = name;
+
+	}
+
+	public String toString() {
+
+		return "Employee [eid=" + eid + ", name=" + name + "]";
+
+	}
+
+}
+
+public class TestSet {
+ 
+	public static void main(String[] args) {
+
+		// TODO Auto-generated method stub
+
+		Set s= new HashSet();
+
+		s.add(123);
+
+		s.add(456);
+
+		s.add(true);
+
+		s.add("Java");
+
+		Emp e1 = new Emp(1,"John");
+
+		Emp e2 = new Emp(2,"John");
+
+		Emp e3 = e1;
+
+		s.add(456);
+
+		s.add(e1);
+
+		s.add(e3);
+
+		s.add(e2);
+
+		System.out.println(s);
+
+
+	}
+ 
+}
+
+***************************	
+
+  Map - 
+
+	key - unique
+
+	key - value
+
+add->
+
+	put(key,value)
+
+HashMap
+
+	key - null
+
+	value - null
+
+Entry
+
+	key,value
+
+Set keys = keySet()
+
+value -> get(key)	
+ 
+************************
+
+package collnpkg;
+ 
+import java.util.HashMap;
+
+import java.util.Iterator;
+
+import java.util.Map;
+
+import java.util.Map.Entry;
+
+import java.util.Set;
+ 
+public class TestMap {
+ 
+	public static void main(String[] args) {
+
+		Map m = new HashMap();
+
+		m.put(1, "Java");
+
+		m.put(2, "Oracle");
+
+		m.put(1, "Java");
+
+		m.put(1, "Python");
+
+		System.out.println(m);
+
+		int key = 2;
+
+		Object obj =m.get(key);
+
+		System.out.println(key +"="+obj);
+
+		System.out.println("********using keySet and get() ******");
+
+		Set keys = m.keySet();
+
+		for(Object k : keys) { //for each key k in the Set keys
+
+			obj =m.get(k);
+
+			System.out.println(k +"="+obj);
+
+		}
+
+		HashMap<Integer,String> hm =new HashMap<Integer,String>();
+
+		hm.put(1, "We");
+
+		hm.put(2, "are");
+
+		hm.put(3, "Good");
+
+		hm.put(4, "in");
+
+		hm.put(5, "Java");
+
+		System.out.println("********using keySet and get() ******");
+
+		Set<Integer> keysHm = hm.keySet();
+
+		for(Integer k : keysHm) { //for each key k in the Set keys
+
+			String val =hm.get(k);
+
+			System.out.println(k +"="+val);
+
+		}
+
+		//entries
+
+		System.out.println("******using entrySet and iterator and Map.Entry*******");
+
+	    Set entries= hm.entrySet();
+
+	    Iterator itr = entries.iterator();
+
+	    while(itr.hasNext()) {
+
+	    	Map.Entry<Integer,String> me =  (Entry<Integer, String>) itr.next();
+
+	    	//System.out.println(itr.next());
+
+	    	System.out.println(me.getKey() +"="+	me.getValue());
+
+	    }
+
+	}
+
+}
+
+****************************
+
+Data
+
+	raw facts - can be processed to derive meaningful inform
+
+	known facts
+
+FMS
+
+Database
+
+DataBaseManagementSystem
+ 
+RelationalDataBaseManagementSystsem
+
+	data/entity
+
+		entity - 
+
+			tabular
+
+		table - rows/record/tuple and attribute/column/field
+ 
+ 
+Customer, c01, withdrawing amount 1000 from the account 100100100 on 10th May 2024 at 10.00am
+
+Table- TransactionTB
+
+CustomerId|	Amount	|Action	|Accountnum		|Date		| Time		| CurrBal
+
+====================================================================================
+
+c01		|	1000	| Debit	|	100100100	|10-May-24	| 10:00 AM	
+
+c01		|	1000	| Debit	|	100100100	|10-May-24	| 10:00 AM	
+
+c02
+ 
+Rules/Constraint
+
+===============
+
+	unique
+
+	check
+
+	not null
+
+	integrity
+
+	ref integrity
+ 
+	Oracle
+
+		10g/11g Express edition
+
+	Mysql
+
+	H2
+
+	...
+
+Tomorrow:
+ 
+SQL
+
+	define
+
+	manipulate
+
+	control
+
+	query
+ 
+	CRUD
+
+JDBC

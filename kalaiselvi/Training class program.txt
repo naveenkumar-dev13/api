@@ -1,0 +1,1446 @@
+ Java
+====
+Day1:
+/*
+The following program accepts a String as command line argument and reverses it using charAt() method. 
+Find the errors, correct it so that when you run it as
+ 
+java TestClass Bangalore
+ 
+it should print "erolagnaB"
+*/
+class TestClass
+{
+    public static void main(String[] ar)
+    {
+        String x=ar[0];
+        int i=x.length();
+        char ch[] = new char[i];
+        for(int j=0;j<i;j++)
+        {
+            ch[j]=x.charAt(i-j-1);
+        }
+        System.out.println(ch);
+    }
+}
+ 
+Java Fundamentals:
+	variable
+		datatype v arName = init_val;
+		local variable - within the method
+	data type
+		prim		non-prim/class/ref
+		----		---------
+		byte		Array
+		short	String
+		long		...
+		int
+		float
+		double
+		char
+		Boolean
+ 
+/* The class below should print the string "Bag" when you run the class as
+ 
+java TestClass
+ 
+It should extract the characters B a and g from the String Bangalore one by one, concatenate them and print "Bag".
+*/
+ 
+class TestClass {
+    public static void main(String[] arg) {
+        String x="Bangalore";
+        char c1=x.charAt(0);  //'B'  ASCII
+        char c2=x.charAt(1);  //'a'
+        char c3=x.charAt(3);  //'g'
+        System.out.println(c1+""+c2+c3);  
+    }
+}
+ 
+	control flow
+		if
+		if..else
+		if..else if..
+		switch
+	loop
+		for
+		while
+		do..while
+		enhanced for
+	Array
+		declare
+			datatype arrName[];
+				arrName = new datatype[size]	
+		int nums[] = new int[5]	   // |0|0|0|0|0|
+								 0 1  2  3  4
+		String words[] = new String[3]   // |null|null|null|
+ 
+			datatype arrName[] =new datatype[]{v1,v2,v3,v4,v5..,vn}
+		int nums[] = new int[]{1,2,3,4,5}
+		String words[] = new String[]{"Hi","Hello",null}
+ 
+			datatype arrName[] = {v1,v2,v3,v4,v5..,vn}
+		int nums[] = {1,2,3,4,5}
+		String words[] = {"Hi","Hello","Hey"}
+ 
+/* Correct the errors in the following program, so that when it is executed, it prints the following output
+ 
+1 2 3 4 5 
+*/
+ 
+public class TestClass {
+    public static void main(String[] args) {
+            int arr[] = new int[10];	||||||||||
+	    int i = 0;  //local var
+        for ( i = 0; i < 10; i++) {	   0 1   2 3  4 5  6 7 8  9
+                arr[i]=i+1;                          |1|2|3|4|5|6|7|8|9|10|
+            }
+ 
+       for ( i = 0; i < 5; i++) {
+                System.out.print(arr[i]);   // 1 2 3 4 5
+            } 
+    }
+}
+ 
+OOP
+	class
+		object
+			properties - instance/object variables
+						datatype varname
+				 and 
+			behaviours - methods
+				modifiers 	returntype/void methodName()
+				modifiers 	returntype/void methodName(datatype parm1, datatype parm2,...)
+			Modifiers			
+				access - public private protected default
+					 /
+				non-access modifiers - static final abstract
+ 
+Object:
+	Employee
+		properties:	empid, name, salary,...
+		behaviours:	print, …..
+ 
+	emp:
+		empid = 100
+		name = John
+		salary = 30000
+ 
+		.
+ 
+class ClassName
+{
+	properties
+	behaviours
+}
+constructor - obj initialization
+			className(){
+			}
+			className(datatype par1,datatype par2,...){
+			}
+ 
+	this:
+		 curr class obj/ref
+package emppkg;
+class Employee{
+	int empid;  //instance var
+	String name;	//instance var
+	int salary;  //instance var
+	Employee(){
+	}
+	Employee(int empid, String name, int salary){  //a= b
+		this.empid = empid;
+		this.name = name;
+		this.salary = salary;
+	}
+	void print(){  //instance method
+		System.out.println(empid +" "+name+" "+salary);
+	}
+}
+package testpkg;
+import emppkg.Employee;
+public class TestEmployee{
+	public static void main(string[] a)
+	{
+		Employee emp = new Employee();  // to initialize emp, invoke Employee class (default) constructor
+		emp.print();
+		emp = new Employee(100,"John",30000);
+		emp.print();
+		Employee em = new Employee(200,"Smith",40000);
+		em.print();
+	}
+}
+_________
+Predict the output:
+ 
+public class Main 
+{
+    private static int counter = 0;
+    void Main() { //instance method
+        counter = 5;
+    }
+    Main(int x){
+        counter = x;
+    }
+    public static void main(String[] args) {
+	System.out.println(counter);    // ? 0
+        Main mn = new Main(10);
+        System.out.println(counter);    // ? 10
+	mn.Main();   
+	System.out.println(counter);    // ? 5
+    } 
+}
+ 
+-----
+package demopkg;
+ 
+public class Main {
+	private static int counter = 0;
+ 
+	void Main() { // instance method
+		counter = 5;
+	}
+	Main() { // non-param constr 
+		counter = 15;
+	}
+	Main(int x) { //param constr 
+		counter = x;
+	}
+	public static void main(String[] args) {
+		System.out.println(counter); // ? 0
+		Main mn = new Main();
+		System.out.println(counter);  // 15
+		mn = new Main(10);
+		System.out.println(counter); // ? 10
+		mn.Main();
+		System.out.println(counter); // ? 5
+	}
+}
+----------------
+ 
+final
+ 
+----
+ 
+int n = 10;
+System.out.println(n)  => 10
+ 
+Employee e = new Employee(10,"John',1000);
+System.out.println(e.toString();  2341354365
+			ref => toString()		"Employee[Eid = 10 Name = John Salary = 1000]
+ 
+EmpMS
+--------
+   Employee
+	empid
+	name
+	salary
+ 
+EmpArray  size= 5
+addEmp
+	emp
+		id must be unique
+		name should not be null, must have min 2 char
+		salary should not be less than base salary
+updEmp
+delEmp
+searchEmp
+viewallEmp
+ 
+inheritance
+	reuse the code
+ 
+class B extends A{   //B is a type of A
+}
+ 
+	obj acquire - properties and behave of its parent obj
+Single 			Multilevel	Hierarchical			Hybrid
+class A			class A		   class A				   class A
+    |					|		|		|			|		|
+class B			class B	   class B	   class C		  class B	   class C
+					|							|
+				class C						  class D
+ 
+	class Parent{
+		public void speak(){
+			System.out.println("Parent is speaking");
+		}
+	}
+	class Child extends Parent{
+		public void sing(){
+			System.out.println("Child is singing");
+		}
+		public void speak(){
+			System.out.println("Child is speaking");
+		}
+ 
+	}
+ 
+class Tester{
+	public static void main(String[] a)
+	{
+		Parent p = new Parent();
+		p.speak();  // Parent is speaking
+ 
+		Child c = new Child();
+		c.speak();   //  Child is speaking
+		c.sing();      //  Child is singing
+ 
+		//p.sing();  XXXXX
+ 
+		p = new Child();
+		p.speak();    // Child is speaking
+ 
+	}
+}
+ 
+polymorphism
+abstraction
+encapsulation
+	obj
+		properties
+			private
+		accessors/mutators
+			public getter/setter methods
+ 
+Exception
+		unexpected event - affects normal exec prog
+	Handle:
+		try..catch..finally
+ 
+"123" ==> 123
+"one" ==>
+ 
+			try{
+					stm1
+					stm2
+			}
+			catch(Exception ex1)
+			{
+				System.out.println("exc message");
+			}
+			finally{
+			}
+			stm....
+ 
+	Own/User defined exc
+		class MyException extends Exception //MyException Is-A type of Exception
+		{
+		}
+	to raise/throw
+		throw ref exception
+			  ---------------
+					constr
+I/O stream
+Wrapper
+ 
+9.30am
+11.am t-break - 15 minutes
+1.00pm
+2.00pm
+3.15 -t-break
+4.00
+ 
+EmpMS
+=======
+Employee.java
+------------
+package emp;
+ 
+public class Employee {
+	private int empid;
+	private String name;
+	private int salary;
+	public Employee() {}
+	public Employee(int eid, String name, int sal) {
+		empid = eid;
+		this.name = name;
+		salary = sal;
+	}
+	public int getEmpid() {
+		return empid;
+	}
+	public void setEmpid(int empid) {
+		this.empid = empid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+	public String toString() {
+		return "Employee [empid=" + empid + ", name=" + name + ", salary=" + salary + "]";
+	}
+	/*public String toString()
+	{
+		return "Employee[Eid = " +empid+ " Name = "+name+ " Salary = "+salary +"]";
+	}*/
+}
+********************
+EmpSalException.java
+-------------------------
+package empexc;
+ 
+public class EmpSalException extends Exception {
+	public EmpSalException() {}
+	public EmpSalException(String msg) {
+		super(msg);
+	}
+ 
+}
+************************
+EmpManager.java
+-------------------
+package mgr;
+ 
+import emp.Employee;
+import empexc.EmpSalException;
+ 
+public class EmpManager {
+	Employee emparr[] = new Employee[5]; // |null|null|null|null|null|
+	int counter = 0;
+	static final int BASESAL = 10000;
+ 
+	public boolean addEmp(Employee e) {
+		boolean sts = false;
+		// code
+		// validate e
+		// e should not be null
+		try {
+			if (e == null)
+				throw new NullPointerException("Employee Obj is null");
+			// emp sal must not be less than base salary
+			else if (e.getSalary() < BASESAL)
+				throw new EmpSalException("Salary less than Base Salary");
+			else {
+				if (counter < 5) {
+					emparr[counter] = e;
+					sts = true;
+					counter++;
+				}
+			}
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return sts;
+	}
+ 
+	public boolean updEmp(Employee e) {
+		boolean sts = false;
+		// code
+		return sts;
+	}
+ 
+	public boolean delEmp(int empid) {
+		boolean sts = false;
+		// code
+		return sts;
+	}
+ 
+	public Employee searchEmp(int empid) {
+		Employee emp = null;
+		// code
+		return emp;
+	}
+ 
+	public Employee[] searchEmp(String name) {
+		Employee empArr[] = null;
+		// code
+		return empArr;
+	}
+ 
+	public Employee[] viewAllEmp() {
+		Employee emparr[] = null;
+		// code
+		return emparr;
+	}
+}
+**********************
+MainClass.java
+----------------
+package mainpkg;
+import java.util.Scanner;
+ 
+import emp.Employee;
+import mgr.EmpManager;
+public class MainClass {
+ 
+	public static void main(String[] args) {
+		int option =0, choice=0;
+		EmpManager mgr =new EmpManager();
+		Scanner sc = new Scanner(System.in);
+		do {
+		System.out.println("Menu");
+		System.out.println("1-Add Employee 2-Upd 3-Del 4-Search id 5-....");
+		option = sc.nextInt();
+		switch(option){
+		case 1: //add
+				System.out.println("Enter Employee details: Eid/Name/Salary");
+				int eid = sc.nextInt();
+				String name=sc.next();
+				int sal = sc.nextInt();
+				Employee emp = new Employee(eid,name,sal);
+				boolean addsts = mgr.addEmp(emp);
+				if(addsts)
+					System.out.println("Employee details added");
+				else
+					System.out.println("Employee details could not be added");
+			break;
+		case 2: //upd
+			break;
+		case 3: //del
+			break;
+		case 4: //search id
+			break;
+		case 5: //search name
+			break;
+		case 6: //view all
+			break;
+		}
+		System.out.println("Wish to continue? YES =11 NO=22");
+		choice =sc.nextInt();
+		}while(choice==11);
+	}
+ 
+}
+**********************
+ 
+tomorrow:
+   I/O stream - Serialization
+   Collection
+   rdbms
+   sql
+ 
+ 
+ Java
+====
+Day1:
+/*
+The following program accepts a String as command line argument and reverses it using charAt() method. 
+Find the errors, correct it so that when you run it as
+ 
+java TestClass Bangalore
+ 
+it should print "erolagnaB"
+*/
+class TestClass
+{
+    public static void main(String[] ar)
+    {
+        String x=ar[0];
+        int i=x.length();
+        char ch[] = new char[i];
+        for(int j=0;j<i;j++)
+        {
+            ch[j]=x.charAt(i-j-1);
+        }
+        System.out.println(ch);
+    }
+}
+ 
+Java Fundamentals:
+	variable
+		datatype v arName = init_val;
+		local variable - within the method
+	data type
+		prim		non-prim/class/ref
+		----		---------
+		byte		Array
+		short	String
+		long		...
+		int
+		float
+		double
+		char
+		Boolean
+ 
+/* The class below should print the string "Bag" when you run the class as
+ 
+java TestClass
+ 
+It should extract the characters B a and g from the String Bangalore one by one, concatenate them and print "Bag".
+*/
+ 
+class TestClass {
+    public static void main(String[] arg) {
+        String x="Bangalore";
+        char c1=x.charAt(0);  //'B'  ASCII
+        char c2=x.charAt(1);  //'a'
+        char c3=x.charAt(3);  //'g'
+        System.out.println(c1+""+c2+c3);  
+    }
+}
+ 
+	control flow
+		if
+		if..else
+		if..else if..
+		switch
+	loop
+		for
+		while
+		do..while
+		enhanced for
+	Array
+		declare
+			datatype arrName[];
+				arrName = new datatype[size]	
+		int nums[] = new int[5]	   // |0|0|0|0|0|
+								 0 1  2  3  4
+		String words[] = new String[3]   // |null|null|null|
+ 
+			datatype arrName[] =new datatype[]{v1,v2,v3,v4,v5..,vn}
+		int nums[] = new int[]{1,2,3,4,5}
+		String words[] = new String[]{"Hi","Hello",null}
+ 
+			datatype arrName[] = {v1,v2,v3,v4,v5..,vn}
+		int nums[] = {1,2,3,4,5}
+		String words[] = {"Hi","Hello","Hey"}
+ 
+/* Correct the errors in the following program, so that when it is executed, it prints the following output
+ 
+1 2 3 4 5 
+*/
+ 
+public class TestClass {
+    public static void main(String[] args) {
+            int arr[] = new int[10];	||||||||||
+	    int i = 0;  //local var
+        for ( i = 0; i < 10; i++) {	   0 1   2 3  4 5  6 7 8  9
+                arr[i]=i+1;                          |1|2|3|4|5|6|7|8|9|10|
+            }
+ 
+       for ( i = 0; i < 5; i++) {
+                System.out.print(arr[i]);   // 1 2 3 4 5
+            } 
+    }
+}
+ 
+OOP
+	class
+		object
+			properties - instance/object variables
+						datatype varname
+				 and 
+			behaviours - methods
+				modifiers 	returntype/void methodName()
+				modifiers 	returntype/void methodName(datatype parm1, datatype parm2,...)
+			Modifiers			
+				access - public private protected default
+					 /
+				non-access modifiers - static final abstract
+ 
+Object:
+	Employee
+		properties:	empid, name, salary,...
+		behaviours:	print, …..
+ 
+	emp:
+		empid = 100
+		name = John
+		salary = 30000
+ 
+		.
+ 
+class ClassName
+{
+	properties
+	behaviours
+}
+constructor - obj initialization
+			className(){
+			}
+			className(datatype par1,datatype par2,...){
+			}
+ 
+	this:
+		 curr class obj/ref
+package emppkg;
+class Employee{
+	int empid;  //instance var
+	String name;	//instance var
+	int salary;  //instance var
+	Employee(){
+	}
+	Employee(int empid, String name, int salary){  //a= b
+		this.empid = empid;
+		this.name = name;
+		this.salary = salary;
+	}
+	void print(){  //instance method
+		System.out.println(empid +" "+name+" "+salary);
+	}
+}
+package testpkg;
+import emppkg.Employee;
+public class TestEmployee{
+	public static void main(string[] a)
+	{
+		Employee emp = new Employee();  // to initialize emp, invoke Employee class (default) constructor
+		emp.print();
+		emp = new Employee(100,"John",30000);
+		emp.print();
+		Employee em = new Employee(200,"Smith",40000);
+		em.print();
+	}
+}
+_________
+Predict the output:
+ 
+public class Main 
+{
+    private static int counter = 0;
+    void Main() { //instance method
+        counter = 5;
+    }
+    Main(int x){
+        counter = x;
+    }
+    public static void main(String[] args) {
+	System.out.println(counter);    // ? 0
+        Main mn = new Main(10);
+        System.out.println(counter);    // ? 10
+	mn.Main();   
+	System.out.println(counter);    // ? 5
+    } 
+}
+ 
+-----
+package demopkg;
+ 
+public class Main {
+	private static int counter = 0;
+ 
+	void Main() { // instance method
+		counter = 5;
+	}
+	Main() { // non-param constr 
+		counter = 15;
+	}
+	Main(int x) { //param constr 
+		counter = x;
+	}
+	public static void main(String[] args) {
+		System.out.println(counter); // ? 0
+		Main mn = new Main();
+		System.out.println(counter);  // 15
+		mn = new Main(10);
+		System.out.println(counter); // ? 10
+		mn.Main();
+		System.out.println(counter); // ? 5
+	}
+}
+----------------
+ 
+final
+ 
+----
+ 
+int n = 10;
+System.out.println(n)  => 10
+ 
+Employee e = new Employee(10,"John',1000);
+System.out.println(e.toString();  2341354365
+			ref => toString()		"Employee[Eid = 10 Name = John Salary = 1000]
+ 
+EmpMS
+--------
+   Employee
+	empid
+	name
+	salary
+ 
+EmpArray  size= 5
+addEmp
+	emp
+		id must be unique
+		name should not be null, must have min 2 char
+		salary should not be less than base salary
+updEmp
+delEmp
+searchEmp
+viewallEmp
+ 
+inheritance
+	reuse the code
+ 
+class B extends A{   //B is a type of A
+}
+ 
+	obj acquire - properties and behave of its parent obj
+Single 			Multilevel	Hierarchical			Hybrid
+class A			class A		   class A				   class A
+    |					|		|		|			|		|
+class B			class B	   class B	   class C		  class B	   class C
+					|							|
+				class C						  class D
+ 
+	class Parent{
+		public void speak(){
+			System.out.println("Parent is speaking");
+		}
+	}
+	class Child extends Parent{
+		public void sing(){
+			System.out.println("Child is singing");
+		}
+		public void speak(){
+			System.out.println("Child is speaking");
+		}
+ 
+	}
+ 
+class Tester{
+	public static void main(String[] a)
+	{
+		Parent p = new Parent();
+		p.speak();  // Parent is speaking
+ 
+		Child c = new Child();
+		c.speak();   //  Child is speaking
+		c.sing();      //  Child is singing
+ 
+		//p.sing();  XXXXX
+ 
+		p = new Child();
+		p.speak();    // Child is speaking
+ 
+	}
+}
+ 
+polymorphism
+abstraction
+encapsulation
+	obj
+		properties
+			private
+		accessors/mutators
+			public getter/setter methods
+ 
+Exception
+		unexpected event - affects normal exec prog
+	Handle:
+		try..catch..finally
+ 
+"123" ==> 123
+"one" ==>
+ 
+			try{
+					stm1
+					stm2
+			}
+			catch(Exception ex1)
+			{
+				System.out.println("exc message");
+			}
+			finally{
+			}
+			stm....
+ 
+	Own/User defined exc
+		class MyException extends Exception //MyException Is-A type of Exception
+		{
+		}
+	to raise/throw
+		throw ref exception
+			  ---------------
+					constr
+I/O stream
+Wrapper
+ 
+9.30am
+11.am t-break - 15 minutes
+1.00pm
+2.00pm
+3.15 -t-break
+4.00
+ 
+EmpMS
+=======
+Employee.java
+------------
+package emp;
+ 
+public class Employee {
+	private int empid;
+	private String name;
+	private int salary;
+	public Employee() {}
+	public Employee(int eid, String name, int sal) {
+		empid = eid;
+		this.name = name;
+		salary = sal;
+	}
+	public int getEmpid() {
+		return empid;
+	}
+	public void setEmpid(int empid) {
+		this.empid = empid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+	public String toString() {
+		return "Employee [empid=" + empid + ", name=" + name + ", salary=" + salary + "]";
+	}
+	/*public String toString()
+	{
+		return "Employee[Eid = " +empid+ " Name = "+name+ " Salary = "+salary +"]";
+	}*/
+}
+********************
+EmpSalException.java
+-------------------------
+package empexc;
+ 
+public class EmpSalException extends Exception {
+	public EmpSalException() {}
+	public EmpSalException(String msg) {
+		super(msg);
+	}
+ 
+}
+************************
+EmpManager.java
+-------------------
+package mgr;
+ 
+import emp.Employee;
+import empexc.EmpSalException;
+ 
+public class EmpManager {
+	Employee emparr[] = new Employee[5]; // |null|null|null|null|null|
+	int counter = 0;
+	static final int BASESAL = 10000;
+ 
+	public boolean addEmp(Employee e) {
+		boolean sts = false;
+		// code
+		// validate e
+		// e should not be null
+		try {
+			if (e == null)
+				throw new NullPointerException("Employee Obj is null");
+			// emp sal must not be less than base salary
+			else if (e.getSalary() < BASESAL)
+				throw new EmpSalException("Salary less than Base Salary");
+			else {
+				if (counter < 5) {
+					emparr[counter] = e;
+					sts = true;
+					counter++;
+				}
+			}
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return sts;
+	}
+ 
+	public boolean updEmp(Employee e) {
+		boolean sts = false;
+		// code
+		return sts;
+	}
+ 
+	public boolean delEmp(int empid) {
+		boolean sts = false;
+		// code
+		return sts;
+	}
+ 
+	public Employee searchEmp(int empid) {
+		Employee emp = null;
+		// code
+		return emp;
+	}
+ 
+	public Employee[] searchEmp(String name) {
+		Employee empArr[] = null;
+		// code
+		return empArr;
+	}
+ 
+	public Employee[] viewAllEmp() {
+		Employee emparr[] = null;
+		// code
+		return emparr;
+	}
+}
+**********************
+MainClass.java
+----------------
+package mainpkg;
+import java.util.Scanner;
+ 
+import emp.Employee;
+import mgr.EmpManager;
+public class MainClass {
+ 
+	public static void main(String[] args) {
+		int option =0, choice=0;
+		EmpManager mgr =new EmpManager();
+		Scanner sc = new Scanner(System.in);
+		do {
+		System.out.println("Menu");
+		System.out.println("1-Add Employee 2-Upd 3-Del 4-Search id 5-....");
+		option = sc.nextInt();
+		switch(option){
+		case 1: //add
+				System.out.println("Enter Employee details: Eid/Name/Salary");
+				int eid = sc.nextInt();
+				String name=sc.next();
+				int sal = sc.nextInt();
+				Employee emp = new Employee(eid,name,sal);
+				boolean addsts = mgr.addEmp(emp);
+				if(addsts)
+					System.out.println("Employee details added");
+				else
+					System.out.println("Employee details could not be added");
+			break;
+		case 2: //upd
+			break;
+		case 3: //del
+			break;
+		case 4: //search id
+			break;
+		case 5: //search name
+			break;
+		case 6: //view all
+			break;
+		}
+		System.out.println("Wish to continue? YES =11 NO=22");
+		choice =sc.nextInt();
+		}while(choice==11);
+	}
+ 
+}
+**********************
+ 
+tomorrow:
+   I/O stream - Serialization
+   Collection
+   rdbms
+   sql
+ 
+ 
+Day 2 notes
+ 
+Day2:
+
+clone()
+
+--------
+
+   copy of an obj
+ 
+Employee e1 = new Employee(100,"John",2000); //23423424
+
+Employee e2 = e1;						     //23423424
+ 
+e2.salary = 3000;
+ 
+e2.print(); //100 John 3000
+
+e1.print();  //100 John 3000
+ 
+Employee e3 = e1.getClone();					//54364573
+
+e3.print();  //100 John 3000
+ 
+e3.salary = 5000;
+
+e3.print(); //100 John 5000
+
+e1.print();  //100 John 3000
+ 
+ 
+---------
+ 
+package emppkg;
+
+public class Employee extends Object implements Cloneable {
+
+	int empid;  //instance var
+
+	String name;	//instance var
+
+	int salary;  //instance var
+
+	public Employee(){
+
+		super();
+
+	}
+
+	public Employee(int empid, String name, int salary){  //a= b
+
+		this.empid = empid;
+
+		this.name = name;
+
+		this.salary = salary;
+
+	}
+
+	public void print(){  //instance method
+
+		System.out.println(empid +" "+name+" "+salary);
+
+	}
+ 
+	public Employee getClone() throws CloneNotSupportedException {
+
+		Employee emp = null;
+
+		try{
+
+			emp = super.clone();
+
+			if (emp.salary < 3000)
+
+				throw new  Exception();
+
+		}catch(CloneNotSupportedException ex){	
+
+		}
+ 
+			return emp;
+
+	}
+
+}
+ 
+*************************
+
+Employee.java
+
+-----------------
+
+package emppkg;
+
+public class Employee implements Cloneable{
+
+	public int empid;  //instance var
+
+	public String name;	//instance var
+
+	public int salary;  //instance var
+
+	public Employee(){
+
+	}
+
+	public Employee(int empid, String name, int salary){  //a= b
+
+		this.empid = empid;
+
+		this.name = name;
+
+		this.salary = salary;
+
+	}
+
+	public void print(){  //instance method
+
+		System.out.println(empid +" "+name+" "+salary);
+
+	}
+
+	public Employee getClone() //throws CloneNotSupportedException
+
+	{
+
+		Employee emp = null;
+
+		//code
+
+		try {
+
+			emp = (Employee)super.clone();
+
+		} catch (CloneNotSupportedException e) {
+
+			System.out.println("Clone not supported");
+
+		}
+
+		return emp;
+
+	}
+
+}
+
+**************
+
+TestEmployee.java
+
+--------------------
+
+package testpkg;
+
+import emppkg.Employee;
+
+public class TestEmployee{
+
+	public static void main(String[] a)
+
+	{
+
+		/*Employee emp = new Employee();  // to initialize emp, invoke Employee class (default) constructor
+
+		emp.print();
+
+		emp = new Employee(100,"John",30000);
+
+		emp.print();*/
+
+		Employee em1 = new Employee(200,"Smith",40000);
+
+		em1.print();
+
+		System.out.println(em1.hashCode());
+
+		Employee em2 = em1;
+
+		System.out.println(em2.hashCode());
+
+		em2.salary =  70000;
+
+		em2.print();
+
+		em1.print();
+
+		Employee empclone = em1.getClone();
+
+		System.out.println(empclone.hashCode());
+
+		empclone.print();
+
+		empclone.salary =  90000;
+
+		empclone.print();
+
+		em1.print();
+
+	}
+
+}
+
+*********************
+ 
+  I/O stream - 
+
+	read/write
+
+		Character
+
+		ByteStream
+
+Serialization
+
+	ObjectOutputStream
+
+		writeObject()
+
+Deserialization
+
+	ObjectInputStream
+
+		readObject()
+ 
+Marker interface:
+
+	does not have any abstract methods
+
+Weather
+
+---------
+
+	temp
+
+	wind
+
+	rain
+
+	….
+ 
+Weather w = new Weather(30,50,false);
+ 
+ 
+w=new Weather(25,80,false);
+ 
+ 
+w=new Weather(23,80,rain);
+ 
+------
+
+Weather.java
+
+---------------
+
+package iostreamdemo;
+ 
+import java.io.Serializable;
+ 
+public class Weather implements Serializable {
+
+	private int temp;
+
+	transient private int wind;
+
+	private boolean rain;
+
+	public Weather() {
+
+		super();
+
+	}
+
+	public Weather(int temp, int wind, boolean rain) {
+
+		super();
+
+		this.temp = temp;
+
+		this.wind = wind;
+
+		this.rain = rain;
+
+	}
+
+	public int getTemp() {
+
+		return temp;
+
+	}
+
+	public void setTemp(int temp) {
+
+		this.temp = temp;
+
+	}
+
+	public int getWind() {
+
+		return wind;
+
+	}
+
+	public void setWind(int wind) {
+
+		this.wind = wind;
+
+	}
+
+	public boolean isRain() {
+
+		return rain;
+
+	}
+
+	public void setRain(boolean rain) {
+
+		this.rain = rain;
+
+	}
+
+	@Override
+
+	public String toString() {
+
+		return "Weather [temp=" + temp + ", wind=" + wind + ", rain=" + rain + "]";
+
+	}
+
+}
+
+***************
+
+TestWeather.java
+
+--------------------
+
+package iostreamdemo;
+ 
+import java.io.FileInputStream;
+
+import java.io.FileNotFoundException;
+
+import java.io.FileOutputStream;
+
+import java.io.IOException;
+
+import java.io.ObjectInputStream;
+
+import java.io.ObjectOutputStream;
+ 
+public class TestWeather {
+ 
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+		Weather w = new Weather(30,50,false);
+
+		System.out.println("Now: "+ w);
+ 
+		System.out.println("Start Serialization");
+
+		String file = "D:\\WCF\\Jan20th\\Weather.txt";
+
+		FileOutputStream flOS = new FileOutputStream(file);
+
+		ObjectOutputStream objOS = new ObjectOutputStream(flOS);
+
+		objOS.writeObject(w);
+
+		System.out.println("Serialization done");
+
+		w=new Weather(25,80,false);
+
+		System.out.println("Now: "+ w);
+
+		//w=new Weather(35,50,false);
+
+		//System.out.println("Now: "+ w);
+
+		System.out.println("Start DeSerialization");
+
+		FileInputStream flIS = new FileInputStream(file);
+
+		ObjectInputStream objIS = new ObjectInputStream(flIS);
+
+		Weather w_prev = (Weather) objIS.readObject();
+
+		System.out.println("De-Serialization done");
+
+		System.out.println("Prev state: "+ w_prev);
+
+	}
+ 
+}
+
+********************
+ 
+Tomorrow:
+
+Collection
+
+   rdbms/sql/Oracle DBMS
+ 
+ 

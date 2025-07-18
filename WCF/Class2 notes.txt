@@ -1,0 +1,369 @@
+Types of inheritnace
+ 
+Single				Multilevel		Hierarchical			Hybrid
+class A				class A			   class A				   class A
+     |						|			|		|			|		|
+class B				class B			class B	class C		class B  class C
+						|									|
+					class C								class D
+ 
+Polymorphism:
+    many forms
+    compile - static 
+              method sig - param diff - num/type/order
+    runtime - dynamic
+              method overload  
+                       method sig - same
+ 
+Tomorrow:
+=========
+Abstraction
+			declare specification
+	Abstract class
+		 0-100
+	         cannot instantiate
+		abstract class AbsClass1{
+			abstract void absMethod();  //abstract method
+			void nonAbsMethod(){ //nonabstract method
+                        } 
+		}
+  or
+                abstract class AbsClass2{
+			abstract void absMethod1();  //abstract method
+			abstract void absMethod2(); //abstract method
+		}
+    or
+                abstract class AbsClass3{
+			void absMethod(){ //non-abstract method
+			} 
+			void nonAbsMethod(){ //nonabstract method
+                        } 
+		}
+ 
+class DerivedClass extends AbsClass1{
+	/* void absMethod(){
+		//code
+	} */
+}
+	Interface - 100
+	     public static final variable
+             public abstract methods
+interface Interface1
+{
+	int num = 100;
+	void method();
+}
+interface Interface2 extends Interface1 {   //IS-A type of Interface1
+	int method1(int x);
+}
+interface Interface3
+{	
+	void method3();
+}
+interface Interface4 extends Interface2, Interface3
+{	
+	//void method3();
+        //void method();
+        //int method1(int x);
+	int method(int x,int y);
+}
+ 
+abstract class DerivedClass implements Interface1{
+        int n;	
+}
+ 
+Encapsulation
+	private access modifier - hiding details
+	accssor/mutator - getter/setter
+		read only - get - public getter method
+		write only - set - public setter method
+		read and write -  get / set - public  getter/ setter methods
+ 
+Bean / Plain Java class - Object details
+class Student{
+	private int rno;
+	private String name;
+	private int score;
+	private String grade;
+	public int getRno(){
+		return rno;
+	}	
+	public void setRno(int rno){
+		this.rno = rno;
+	}
+        public String getName(){
+		return name;
+	}	
+	public void setName(String name){
+		//validate
+		this.name = name;
+	}
+	public int getScore(){
+		return score;
+	}	
+	public void setScore(int score){
+		this.score = score;
+	}
+	public String getGrade(){
+		return grade;
+	}
+	public void setGrade(String grade){
+		this.grade =  grade;
+	}	
+}
+------------
+ 
+public class Main extends Object
+{
+    private static int counter = 0;
+ 
+    void Main() { 		//method
+        counter = 5;
+    }
+    Main(int x){
+        counter = x;
+    }
+    Main() {
+	//super();
+        counter = 15;
+    }
+    public static void main(String[] args) {
+         counter = 1000
+         System.out.println(counter);  // 1000
+        Main mn = new Main();
+        System.out.println(counter);   // 15
+	mn.Main();
+         System.out.println(counter);   // 5
+        mn = new Main(100);
+         System.out.println(counter);  // 100
+         Main mn1 = new Main();
+	System.out.println(mn1.counter);   // 15
+	System.out.println(mn.counter);    // 15
+    } 
+}
+ 
+ 
+-------------------
+Exception
+	- unexpected events/ affects normal exec 
+        Throwable
+	|		 |
+Exception         Error
+ 
+     - checked - compile
+		ClassNotfoundException,SQLException ,.....
+     - unchecked
+		RuntimeException
+			-ArithmeticException'
+			-Null....
+to declare
+=========
+		throws Exc- 
+	class MyClass{
+			void method()throws ClassNotFoundExcption{
+				MyOtherClass c = getMyClassObj();
+			}
+	}
+to raise/throw
+==============
+		throw ref
+	if(cond)
+		throw new Exce()
+			or
+		throw new Error()
+Custom/user defined Exc
+========================
+	class MyException extends Exception{  //IS-A type of Exc
+        }
+to handle	
+========
+		try{
+		}
+		catch(Exec ref)
+		{
+			sts
+		}
+-------------------
+		try{
+		}
+		finally  //always exec
+		{
+			sts
+		}
+		sts..
+---------------------
+		try{
+		}
+		catch(Exec ref)
+		{
+			sts
+		}
+		finally{
+		}
+-------------
+		try{
+		}
+		catch(Exec1 ref)
+		{
+			sts
+		}
+                catch(Exec1 ref)
+		{
+			sts
+		}
+		catch(Exec1 ref)
+		{
+			sts
+		}
+		finally{
+		}
+ 
+ 
+IO Steam 
+	Serialization
+		Bytestream the state of an Obj
+	DeSerialization
+		back to Obj from Bytestream
+Marker interface
+    - no abstract method
+	Cloneable
+class Employee extends Object implements Cloneable{
+	Employee getEmpClone(){
+		super.clone();
+	}
+}
+class TestEmployee{
+	public static void main(String[] a){
+		Employee e1 = new Employee(100,"John", 10000);
+		Employee e2 = e1;
+		Employee e3 = e1.getEmpClone();
+	}
+}
+ 
+	Serializable
+ 
+class Student implements Serializable //extends Object{
+{
+	int rno;
+	String name;
+	int score;
+	public toString(){
+		return "Student[rno="rno+" name="+name+" score="+score+"]":
+	}
+}
+ 
+class TestStudent{
+	public static void main(String a[]) ClassNotFoundException,IOException{
+		Student s = new Student();
+		System.out.println(s);  //Student@12r367213 => Student[rno=0 name=null score=0]
+		s.score = 90;
+		s.name="John";
+		s.rno=1;
+	        System.out.println(s); //.toString());  // Student[rno=1 name=John score=90]
+		//serialization
+			//stored the bytestream rep of s into file
+		//deserialzation
+			//retrieving the obj state .../
+			Student s = deserailzedObj;
+	}
+}
+ 
+Weather - serializable
+    state - changes over a period 
+       temp
+	wind
+        rain
+        ......
+ 
+device - read state
+ 
+********************
+Weather.java
+-------
+package serialdeserialpkg;
+ 
+import java.io.Serializable;
+ 
+public class Weather implements Serializable
+{
+	private int temp;
+	private boolean rain;
+	private int wind;
+	public Weather() {
+		super();
+	}
+	public Weather(int temp, boolean rain, int wind) {
+		super();
+		this.temp = temp;
+		this.rain = rain;
+		this.wind = wind;
+	}
+	public int getTemp() {
+		return temp;
+	}
+	public void setTemp(int temp) {
+		this.temp = temp;
+	}
+	public boolean isRain() {
+		return rain;
+	}
+	public void setRain(boolean rain) {
+		this.rain = rain;
+	}
+	public int getWind() {
+		return wind;
+	}
+	public void setWind(int wind) {
+		this.wind = wind;
+	}
+	public String toString() {
+		return "Weather [temp=" + temp + ", rain=" + rain + ", wind=" + wind + "]";
+	}	
+}
+****************
+TestWeather.java
+-------------------
+package serialdeserialpkg;
+ 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+ 
+public class TestWeather {
+ 
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+			Weather w = new Weather(34,false,40);
+			System.out.println(w);
+			//serialization
+			String file ="D:\\WCF\\May13\\programs\\Weather.txt";
+			FileOutputStream flOS = new FileOutputStream(file);
+			ObjectOutputStream objOS = new ObjectOutputStream(flOS);
+			objOS.writeObject(w);
+			System.out.println("Serialization completed");
+			w = new Weather(20,true,80);
+			System.out.println(w);
+			//deserialization
+			FileInputStream flIS = new FileInputStream(file);
+			ObjectInputStream objIS = new ObjectInputStream(flIS);
+			Weather prev_obj = (Weather) objIS.readObject();
+			System.out.println("Serialization completed");
+			System.out.println("Prev state of Weather : \n"+prev_obj);
+	}
+}
+*********************
+Tomorrow:
+ 
+Unit testing
+-----------
+Collection
+ 
+RDBMS
+	Oracle
+		10g/11g
+	Mysql
+	H2
+	...
+SQL

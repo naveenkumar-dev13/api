@@ -1,0 +1,292 @@
+/* The following class adds up values of three float variables and prints the sum. 
+Find the error
+*/
+ 
+class TestClass {
+     static public void main(String [] x) {
+        float f1= 1.2f;
+        float f2= 2.4f;
+        float f3 = 3.6f;
+        System.out.println(f1+f2+f3);
+    }
+}
+ 
+ 
+Java Fundamentals
+    lang basics
+    	variables
+	data types
+		prim types	non-prim type
+		==========	============
+		byte			 String
+		short		 array
+		int
+		long
+		float
+		double
+		char
+		boolean
+ 
+        operators
+    flow control
+	if
+	if..else
+	if..else if...else
+        switch
+    loop statments
+	for..
+        while
+	do..while
+         enhanced for loop
+	array --
+		datatype	arrayName[] =  new datatype arrayName[size]
+		datatype	arrayName[] =  new datatype arrayName[] {v1,v2,v3....,vn}
+		datatype	arrayName [] =  {v1,v2,v3....,vn}
+	arrName[idx]   0 >= indx < size-1
+ 
+							   0 1  2  3  4
+     int numbers[] = {1,2,3,4,5}      // |1|2|3|4|5|
+ 
+    int val = numbers[4] => 5
+ 
+     int v = 10;
+    numbers[3] = v;				 |1|2|3|10|5|
+ 
+ 
+/* Correct the errors in the following program, so that when it is executed, it prints the following output
+ 
+1 2 3 4 5
+ 
+*/
+ 
+public class TestClass {
+    public static void main(String[] args) {
+            int arr[] = new int[10];
+	   int i = 0;   //local var
+        //for (int i = 0; i < 10; i++) {
+         for ( i = 0; i < 10; i++) {
+                arr[i]=i+1;
+            }
+ 
+        //for (i = 0; i <= 10; i++) {  				 //for loop condition to be changed i<=4 or i<5 , i not declared
+	   for ( i = 0; i <= 4; i++) {
+                System.out.print(arr[i] +" ");    // o/p will be printed without space 12345
+            } 
+    }
+}
+ 
+ 
+*********
+ 
+/* The class below should print the string "Bag" when you run the class as
+ 
+java TestClass
+ 
+It should extract the characters B a and g from the String Bangalore one by one, concatenate them and print "Bag".
+*/
+ 
+class TestClass {
+  //  public static void main() { //arg must be declared as String[]
+         public static void main(String[] a) {
+        String x="Bangalore";    // Bangalore
+        char c1=x.charAt(0);   // 'B'
+        char c2=x.charAt(1);   //'a'
+        char c3=x.charAt(3);   //'g'  
+	String s1 = String.valueOf(c1);
+        //System.out.println(c1+c2+c3);   //  'B'+'a'+'g' = "Bag"   ?
+        //System.out.println(s1+c2+c3); 
+        System.out.println(c1+""+c2+c3); 
+    }
+}
+int n =10;
+String str =  "";
+str = str + n;
+ 
+class and object
+===============
+ 
+object => 
+	properties
+        behaviour
+ 
+class ClassName{
+	properties
+		variables
+			dataType varName
+	behaviour
+		method
+			void/dataType methodName()
+}
+ 
+Student:
+properties:
+   rno
+   name
+   score
+   grade
+   ...
+behav:
+   calcGrade
+   display
+   ....
+ 
+s1:
+rno=1
+name=Smith
+score=90
+grade=A
+ 
+calcGrade
+    A = score >=90 
+    B = score >=80 but < 90
+    C = score >=70 but <80
+ 
+Constructor:
+   default/empty - non-param 
+      instance var => default val
+  param constr
+	param - diff num/order/datatype
+          -> overloaded
+
+ 
+this
+====
+          curr class inst/obj/ref
+          invoke other constr - this() this(arg,...)
+	  this- cannot use in static method
+************
+class Student {
+	int rno;      //instance var  //0
+	String name;   //instance var //null
+	int score;  //instance var  //0
+	String grade;   //instance   
+	Student(){
+	}
+        Student(int rnumber,String name,int score){
+		rno = rnumber;
+		this.name = name;
+		this.score = score;
+	}
+ 
+  	String calGrade(){    //instance. method
+		String stGrade = "no grade";
+    		if(score >= 90)
+			stGrade ="A+";
+		else if(score >=80 && score <90)
+			stGrade ="A";
+		else if(score >=70 && score <80)
+			stGrade ="B+";
+		else if(score >=60 && score <70)
+			stGrade ="B+";
+		else
+			stGrade ="C+";
+   		return stGrade;
+  	}
+  	void Display(){
+		//code
+  	}
+       public static void main(String[]){
+		Student st = new Student();  //invoke the default/empty constr
+		st.rno=1;
+		st.name="Smith";
+		st.score = 90;
+                st = new Student(1,"Smith",90);
+		st.grade = st.calGrade();    //C+
+			//this.calGrade();  XXXX
+	}
+}
+ 
+ 
+ 
+ 
+class TestStudent{
+	public static void main(String[]){
+		Student st = new Student();  //invoke the default/empty constr
+		st.rno=1;
+		st.name="Smith";
+		st.score = 90;
+                st = new Student(1,"Smith",90);
+		st.grade = st.calGrade();    //C+
+			//this.calGrade();  XXXX
+	}
+}
+***********
+access modifiers
+	visibility markers - public private protected
+	class - public
+non-access modifiers
+        static final abstract..
+ 
+OOPs
+------
+	1. abstraction
+       2. polymorphism
+       3. inheritance
+       4. encapsulation
+ 
+Inheritance:
+     object inherit/acquire the properties/behav of it parent obj
+ 
+Parent
+   extend
+       Child
+ 
+class ParentClass   {
+    parentProp
+    parentBehav
+}
+class ChildClass extends ParentClass // IS-A
+{
+	redefine parentbehav
+	childprop
+	childbehav
+}
+ 
+==code reusability
+==redefine
+==additional behav
+ 
+class Parent{
+    void speak(){
+	System.out.println("Parent is speaking");
+    }
+}
+ 
+class Child extends Parent{
+	void speak(){
+	System.out.println("Child is speaking");
+    }
+     void sing(){
+	System.out.println("Child is singing");
+ 
+    }
+}
+class Tester{
+	public static void main(String[] a)
+	{
+		Parent p = new Parent();
+                p.speak();   // Parent is speaking
+		Child c = new Child();
+                c.speak();  // Child is speaking
+		c.sing();     //Child is singing
+		Parent p = new Child();
+                p.speak();   //Child is speaking
+	}
+}
+ 
+Polymorphism:
+    many forms
+    compile - static 
+              method sig - param diff - num/type/order
+    runtime - dynamic
+              method overload  
+                       method sig - same
+ 
+Tomorrow:
+=========
+Abstraction
+Encapsulation
+Exception
+IO Steam
+-----------
+Collection

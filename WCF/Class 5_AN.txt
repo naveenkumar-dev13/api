@@ -1,0 +1,1430 @@
+[4:30 PM] Athma M
+CRUD
+
+=====
+
+DDL:
+
+Table:
+ 
+Src:
+
+	Department
+
+		dno,dname,loc,...
+
+        Employee	
+
+		eid,name,salary,dno,...
+
+Target:
+
+DepartmentTB
+
+    |DNO	|DNAME			|LOC		|
+
+   =======================================
+
+    |10	| IT				|Bangalore	|
+
+    |20	|Sales			|Chennai		|
+
+    |30	|Training			|Pune		|
+
+    |40	|Admin			|Kolkata		|
+ 
+EmployeeTB
+
+	| EID	|	NAME	|SALARY		|DNO	|
+
+        ==============================================
+
+	|100		| John		| 30000		|10		|
+
+	|200	| Johns		| 34000		|10		|
+
+	|300	| Johncy		|20000		|		|
+ 
+Create table tableName
+
+(
+
+	col1Name datatype not null default val,
+
+	col1Name datatype,
+
+        ...
+
+        col1Name datatype
+
+)
+
+data type:
+
+  numeric
+
+	Number
+
+	Number(p,s)
+
+  date
+
+	date
+
+  character
+
+        Char()
+
+        Varchar()
+
+	Varchar2()
+ 
+Create:
+
+Create table DepartmentTB
+
+(
+
+DNO	Number,
+
+DNAME	Varchar(20),
+
+LOC		Varchar(30)
+
+)
+ 
+To see the structure of DepartmentTB
+
+-----------------------------------------
+
+SQL> desc departmenttb
+
+Name                                      Null?    Type
+
+----------------------------------------- -------- ----------------------------
+
+DNO                                                NUMBER
+
+DNAME                                              VARCHAR2(20)
+
+LOC                                                VARCHAR2(30)
+ 
+Alter:
+
+	add col/contraint
+
+	alter/modify col
+
+	drop
+ 
+Alter table tableName  add constraint constrName constrType:
+ 
+Alter table DepartmentTB  add constraint pk_dno primary key(DNO)
+
+*************
+
+SQL> Alter table DepartmentTB add constraint pk_dno primary key(DNO);
+ 
+Table altered.
+ 
+SQL> desc DepartmentTB
+
+Name                                      Null?    Type
+
+----------------------------------------- -------- ----------------------------
+
+DNO                                       NOT NULL NUMBER
+
+DNAME                                              VARCHAR2(20)
+
+LOC                                                VARCHAR2(30)
+
+*************************
+ 
+Drop:
+
+	drop table tableName
+ 
+Truncate
+
+.	truncate table tableName
+ 
+[4:30 PM] Athma M
+Insert
+ 
+	insert into tableName values(val1,'val2',....)
+
+	insert into tableName(col1,col3,col2,...)  values(val1,val3,'val2',...)
+
+insert into DepartmentTB values(10,'IT','Bangalore');
+
+insert into DepartmentTB values(20,'Sales','Chennai');
+
+insert into DepartmentTB values(30,'Training','Pune');
+
+insert into DepartmentTB values(40,'Admin','Kolkata');
+
+*************
+
+SQL> insert into DepartmentTB values(10,'IT','Bangalore');
+ 
+1 row created.
+ 
+SQL> insert into DepartmentTB values(20,'Sales','Chennai');
+ 
+1 row created.
+ 
+SQL> insert into DepartmentTB values(30,'Training','Pune');
+ 
+1 row created.
+ 
+SQL> insert into DepartmentTB values(40,'Admin','Kolkata');
+ 
+1 row created.
+ 
+ 
+Select
+
+top see all tables in schema
+
+	select * from tab;
+
+Select .....
+
+From 
+
+[Where condn]
+
+[Group By col,..]
+
+[Having condn ]
+
+[Order By col,..
+ 
+commit - save
+
+rollback - undo 
+
+dml
+
+ddl
+ 
+Update:
+
+	Update tableName set col =  newVal;  //all rows
+
+	Update tableName set col= newVal where condn ;  //limited
+ 
+	Update DepartmentTB set loc = Cochin;
+
+**************************************
+
+SQL> Update DepartmentTB set loc = 'Cochin';
+ 
+4 rows updated.
+ 
+SQL> select * from DepartmentTB;
+ 
+       DNO DNAME                LOC
+
+---------- -------------------- ------------------------------
+
+        10 IT                   Cochin
+
+        20 Sales                Cochin
+
+        30 Training             Cochin
+
+        40 Admin                Cochin
+ 
+SQL> rollback;
+ 
+Rollback complete.
+ 
+SQL> select * from DepartmentTB;
+ 
+       DNO DNAME                LOC
+
+---------- -------------------- ------------------------------
+
+        10 IT                   Bangalore
+
+        20 Sales                Chennai
+
+        30 Training             Pune
+
+        40 Admin                Kolkata
+ 
+SQL> Update DepartmentTB set loc = 'Cochin' where dno = 10;
+ 
+1 row updated.
+ 
+SQL> select * from DepartmentTB;
+ 
+       DNO DNAME                LOC
+
+---------- -------------------- ------------------------------
+
+        10 IT                   Cochin
+
+        20 Sales                Chennai
+
+        30 Training             Pune
+
+        40 Admin                Kolkata
+ 
+SQL> commit;
+ 
+Commit complete.
+
+********************************
+ 
+where cond1 and (cond2 or cond3)
+
+where cond1 or cond2
+
+	condn:
+
+               range check => between and, <= 
+
+	       col in(v1,v2...) => col=v1 or col=v2 
+
+		= => equal char/date col = 'val' / col="val"
+
+	       like - pattern match => ''  % / _
+ 
+    name = John
+
+		Johncy
+
+		Smith
+ 
+	where	name like '_o%'  => John and Johncy
+ 
+ 
+Delete
+
+	remove row(s)
+
+	delete from tableName; //all rows
+
+        delete from tableName where cond;  //limited	
+ 
+[4:31 PM] Athma M
+Select col as alt_Title ,exp 
+
+From
+
+Where - filter 
+
+Group by - Agg fun - SUM,COUNT,MIN,MAX,AVG...
+
+Having - filter count(col) > val and/or col = val
+
+Order by
+ 
+to_number('123')
+ 
+********************
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id order by 1;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           10 AD_ASST             1
+
+           20 MK_MAN              1
+
+           20 MK_REP              1
+
+           30 PU_CLERK            5
+
+           30 PU_MAN              1
+
+           40 HR_REP              1
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+
+           50 ST_MAN              5
+
+           60 IT_PROG             5
+
+           70 PR_REP              1
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           80 SA_MAN              5
+
+           80 SA_REP             29
+
+           90 AD_PRES             1
+
+           90 AD_VP               2
+
+          100 FI_ACCOUNT          5
+
+          100 FI_MGR              1
+
+          110 AC_ACCOUNT          1
+
+          110 AC_MGR              1
+
+              SA_REP              1
+ 
+20 rows selected.
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id order by 1 desc;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+              SA_REP              1
+
+          110 AC_ACCOUNT          1
+
+          110 AC_MGR              1
+
+          100 FI_ACCOUNT          5
+
+          100 FI_MGR              1
+
+           90 AD_PRES             1
+
+           90 AD_VP               2
+
+           80 SA_MAN              5
+
+           80 SA_REP             29
+
+           70 PR_REP              1
+
+           60 IT_PROG             5
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+
+           50 ST_MAN              5
+
+           40 HR_REP              1
+
+           30 PU_CLERK            5
+
+           30 PU_MAN              1
+
+           20 MK_MAN              1
+
+           20 MK_REP              1
+
+           10 AD_ASST             1
+ 
+20 rows selected.
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id order by 1 ,2 desc;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           10 AD_ASST             1
+
+           20 MK_REP              1
+
+           20 MK_MAN              1
+
+           30 PU_MAN              1
+
+           30 PU_CLERK            5
+
+           40 HR_REP              1
+
+           50 ST_MAN              5
+
+           50 ST_CLERK           20
+
+           50 SH_CLERK           20
+
+           60 IT_PROG             5
+
+           70 PR_REP              1
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           80 SA_REP             29
+
+           80 SA_MAN              5
+
+           90 AD_VP               2
+
+           90 AD_PRES             1
+
+          100 FI_MGR              1
+
+          100 FI_ACCOUNT          5
+
+          110 AC_MGR              1
+
+          110 AC_ACCOUNT          1
+
+              SA_REP              1
+ 
+20 rows selected.
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id order by 1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           10 AD_ASST             1
+
+           20 MK_MAN              1
+
+           20 MK_REP              1
+
+           30 PU_CLERK            5
+
+           30 PU_MAN              1
+
+           40 HR_REP              1
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+
+           50 ST_MAN              5
+
+           60 IT_PROG             5
+
+           70 PR_REP              1
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           80 SA_MAN              5
+
+           80 SA_REP             29
+
+           90 AD_PRES             1
+
+           90 AD_VP               2
+
+          100 FI_ACCOUNT          5
+
+          100 FI_MGR              1
+
+          110 AC_ACCOUNT          1
+
+          110 AC_MGR              1
+
+              SA_REP              1
+ 
+20 rows selected.
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employeeID) > 20 order by 1 ,
+
+2;
+
+select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employeeID) > 20 order by 1 ,2
+
+                                                                                                                  *
+
+ERROR at line 1:
+
+ORA-00904: "EMPLOYEEID": invalid identifier
+ 
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employee_ID) > 20 order by 1
+
+,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           80 SA_REP             29
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employee_ID) > 10   order by
+
+1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+
+           80 SA_REP             29
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employee_ID) > 10  and job_Id='SH_CLERK' order by 1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees where job_id='SH_CLERK' group by department_id,job_id having count(emplo
+
+yee_ID) > 10  order by 1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+ 
+ 
+SQL> select department_id,job_id,count(employee_id) empCount from employees group by department_id,job_id having count(employee_ID) > 10  and job_Id like '%CLERK' order by 1 ,2;
+ 
+DEPARTMENT_ID JOB_ID       EMPCOUNT
+
+------------- ---------- ----------
+
+           50 SH_CLERK           20
+
+           50 ST_CLERK           20
+ 
+Assignments + Mini Projects + LB Mettl test links
+
+[4:31 PM] Athma M
+
+
+EmployeeTB
+
+	| EID	|	NAME	|SALARY		|DNO	|
+
+        ==============================================
+
+	|100		| John		| 30000		|10		|
+
+	|200	| Johns		| 34000		|10		|
+
+	|300	| Johncy		|20000		|		|
+ 
+eid - unique identifier
+
+name - no nulls
+
+salary - greater than or equal to 10000
+
+dno - allow null, refer DepartmentTB-dno column
+ 
+create table tableName(
+
+    col1 datatype primary key,
+
+    col2 datatype not null,
+
+    col3 datatype check(exp),
+
+    col4 datatype references parentTB(pk_col),
+
+    .......
+
+)
+
+or
+
+create table tableName(
+
+    col1 datatype,
+
+    col2 datatype not null,
+
+    col3 datatype,
+
+    col4 datatype,
+
+    .......,
+
+    constraint pk_col primary key(col1),
+
+    constraint ck_col check(exp),
+
+    constraint fk_currTB_ParentTB foreign key(col4) references parentTB(pk_col),
+
+    ....
+
+)
+ 
+insert into EmployeeTB values(100,'John',30000,10);
+
+insert into EmployeeTB values(200,'Johns',34000,10);
+
+insert into EmployeeTB values(300,'Johncy',20000,null);
+ 
+commit;
+ 
+Test:
+
+insert into EmployeeTB values(100,'John',30000,10);
+
+insert into EmployeeTB values(400,null,30000,10);
+
+insert into EmployeeTB values(500,'Johnson',1000,10);
+
+insert into EmployeeTB values(600,'John',30000,50);
+ 
+JDBC
+
+=======
+ 
+[4:31 PM] Athma M
+Java Databse Connectivity
+
+========================
+
+  variable/array/collections
+ 
+File
+ 
+Database
+ 
+ 
+Java Appl -----JDBC----   RDBMS
+
+   Java                               SQL
+ 
+1. Load driver
+
+2. Connect
+
+3. Statements
+
+4. Execute
+
+5. Process result
+
+6. Close Connection
+ 
+Oracle:
+
+To check port number:
+
+     run - lsnrctl
+
+               status 
+
+To check service name:
+
+     run - services.msc
+ 
+OJDBC
+
+---------
+ 
+     ojdbc6.jar
+http://www.java2s.com/Code/Jar/o/Downloadojdbc6jar.htm
+
+MySQL workbench
+https://dev.mysql.com/downloads/workbench/
+https://static.javatpoint.com/src/jdbc/mysql-connector.jar
+
+download zip => Extract =>
+
+Project -> Right click -> Build Path -> configure Build path -> Libraries -> ModulePath -> Add External Jar ->browse to ojdbc -> Open -> Apply and Close 
+
+ 
+1. Load Driver:
+
+     Class.forName("DriverName");
+ 
+ 
+    Class.forName("oracle.jdbc.driver.OracleDriver"); //Oracle DB 
+
+Class.forName("org.h2.Driver"); //H2 DB
+
+Class.forName("com.mysql.jdbc.Driver"); //MySQL
+ 
+2. Establish Connection - URL. UserName and Password
+
+     Connection con = DriverManager.getConnection(URL,UName,Pwd)
+ 
+   con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","password"); 
+
+//oracle
+
+Connection con=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test","sa",""); 
+
+//h2
+
+Connection 
+
+con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sonoo","root","root"); //mySql
+ 
+3. Statements
+
+Statement/PreparedStatement/CallableStatement
+ 
+          Statement - DDL
+
+              static.
+ 
+             Emp:
+
+              Eno Name  Sal
+ 
+ 
+             select * from Emp;
+ 
+           int eno = 100;
+ 
+            "Select * from Emp where Eno =  " + eno   => Select * from Emp where Eno = 100
+ 
+          String name = "John";
+ 
+           "select * from Emp where Name = '" + name+"'"  => Select * from Emp where Name = 'John'
+ 
+            "insert into Emp values("+eno+",'"+name+"',"+sal+")";
+ 
+          PreparedStatement - DML,DQL
+
+             dynamic 
+
+                    String name = "John";
+
+                   "select * from Emp where Name = ? "
+
+                    setString(1,name)
+ 
+                    "insert into Emp values(?,?,?);
+
+                     setInt(1,eno)
+
+                    setString(2,name);
+
+                     setInt(3,30000);
+ 
+          CallableStatement - 
+
+                   call
+ 
+Execute:
+ 
+           DDL - boolean
+
+           DML - count - int
+
+           DQL - tabular - resultSet - rows/columns
+
+              -----
+
+boolean execute() - DDL
+
+int executeUpdate() - DML
+
+ResultSet executeQuery() - DQL
+ 
+Process:
+
+      DQL - ResultSet
+
+             single row
+
+                    if(resultSet.next())
+
+             multiple rows
+
+                   while().
+ 
+Close:
+
+    close()
+ 
+import java.util.Scanner;
+
+class TestJDBC
+
+{
+
+      public static void main(String[]  a)
+
+      {
+
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("Enter Employee Details: ENo/Name/Salary/DeptNo");
+
+            int eno = sc.nextInt();
+
+            String name = sc.next();
+
+            int sal = sc.nextInt();
+
+            int dno = sc.nextInt();
+ 
+            try {
+
+           //  1. Load driver
+
+             Class.forName("oracle.jdbc.driver.OracleDriver");
+
+           // 2. Connect
+
+             Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","demoSchema","demoSchema"); 
+
+           // 3. Statements
+
+              String qry = "insert into EmpTB values(?,?,?,?)";
+
+              PreparedStatement ps = con.prepareStatement(qry);
+
+              ps.setInt(1,eno);
+
+              ps.setString(2,name);
+
+              ps.setInt(3,sal);
+
+              ps.setInt(4,dno);
+
+          // 4. Execute
+
+               int count =  ps.executeUpdate();
+
+          //  5. Process result
+
+                if(count ==1)
+
+                     System.out.println("Employee details added");
+
+                else
+
+                     System.out.println("Employee details could not be added");
+
+          // 6. Close Connection
+
+                  con.close();
+
+             }
+
+             catch(SQLException sqlex)
+
+             {
+
+                      System.out.println(sqlex.getMessage());
+
+             }
+
+             finally{
+
+                  System.out.println("Thank you...");
+
+             }
+
+      }
+
+}
+ 
+Monday: 
+
+Webapp
+
+=======
+
+    HTML/CSS/JavaScript
+ 
+Assessment
+
+============
+
+  pattern
+
+  section
+
+  timing
+
+13th 31st
+
+Java fund  --- Springboot
+
+1 week - preparation
+
+assessment slots
+
+	Suresh
+
+1st slot :
+
+2
+ 
+Mettl:
+
+Download ojdbc6.jar : ojdbc6 « o « Jar File Download
+Download ojdbc6.jar : ojdbc6 « o « Jar File Download
+
+
+
+
+
+
+
+
+
+[4:31 PM] Athma M
+
+
+EmployeeTB
+
+	| EID	|	NAME	|SALARY		|DNO	|
+
+        ==============================================
+
+	|100		| John		| 30000		|10		|
+
+	|200	| Johns		| 34000		|10		|
+
+	|300	| Johncy		|20000		|		|
+ 
+eid - unique identifier
+
+name - no nulls
+
+salary - greater than or equal to 10000
+
+dno - allow null, refer DepartmentTB-dno column
+ 
+create table tableName(
+
+    col1 datatype primary key,
+
+    col2 datatype not null,
+
+    col3 datatype check(exp),
+
+    col4 datatype references parentTB(pk_col),
+
+    .......
+
+)
+
+or
+
+create table tableName(
+
+    col1 datatype,
+
+    col2 datatype not null,
+
+    col3 datatype,
+
+    col4 datatype,
+
+    .......,
+
+    constraint pk_col primary key(col1),
+
+    constraint ck_col check(exp),
+
+    constraint fk_currTB_ParentTB foreign key(col4) references parentTB(pk_col),
+
+    ....
+
+)
+ 
+insert into EmployeeTB values(100,'John',30000,10);
+
+insert into EmployeeTB values(200,'Johns',34000,10);
+
+insert into EmployeeTB values(300,'Johncy',20000,null);
+ 
+commit;
+ 
+Test:
+
+insert into EmployeeTB values(100,'John',30000,10);
+
+insert into EmployeeTB values(400,null,30000,10);
+
+insert into EmployeeTB values(500,'Johnson',1000,10);
+
+insert into EmployeeTB values(600,'John',30000,50);
+ 
+JDBC
+
+=======
+ 
+[4:31 PM] Athma M
+Java Databse Connectivity
+
+========================
+
+  variable/array/collections
+ 
+File
+ 
+Database
+ 
+ 
+Java Appl -----JDBC----   RDBMS
+
+   Java                               SQL
+ 
+1. Load driver
+
+2. Connect
+
+3. Statements
+
+4. Execute
+
+5. Process result
+
+6. Close Connection
+ 
+Oracle:
+
+To check port number:
+
+     run - lsnrctl
+
+               status 
+
+To check service name:
+
+     run - services.msc
+ 
+OJDBC
+
+---------
+ 
+     ojdbc6.jar
+http://www.java2s.com/Code/Jar/o/Downloadojdbc6jar.htm
+
+MySQL workbench
+https://dev.mysql.com/downloads/workbench/
+https://static.javatpoint.com/src/jdbc/mysql-connector.jar
+
+download zip => Extract =>
+
+Project -> Right click -> Build Path -> configure Build path -> Libraries -> ModulePath -> Add External Jar ->browse to ojdbc -> Open -> Apply and Close 
+
+ 
+1. Load Driver:
+
+     Class.forName("DriverName");
+ 
+ 
+    Class.forName("oracle.jdbc.driver.OracleDriver"); //Oracle DB 
+
+Class.forName("org.h2.Driver"); //H2 DB
+
+Class.forName("com.mysql.jdbc.Driver"); //MySQL
+ 
+2. Establish Connection - URL. UserName and Password
+
+     Connection con = DriverManager.getConnection(URL,UName,Pwd)
+ 
+   con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","password"); 
+
+//oracle
+
+Connection con=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test","sa",""); 
+
+//h2
+
+Connection 
+
+con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sonoo","root","root"); //mySql
+ 
+3. Statements
+
+Statement/PreparedStatement/CallableStatement
+ 
+          Statement - DDL
+
+              static.
+ 
+             Emp:
+
+              Eno Name  Sal
+ 
+ 
+             select * from Emp;
+ 
+           int eno = 100;
+ 
+            "Select * from Emp where Eno =  " + eno   => Select * from Emp where Eno = 100
+ 
+          String name = "John";
+ 
+           "select * from Emp where Name = '" + name+"'"  => Select * from Emp where Name = 'John'
+ 
+            "insert into Emp values("+eno+",'"+name+"',"+sal+")";
+ 
+          PreparedStatement - DML,DQL
+
+             dynamic 
+
+                    String name = "John";
+
+                   "select * from Emp where Name = ? "
+
+                    setString(1,name)
+ 
+                    "insert into Emp values(?,?,?);
+
+                     setInt(1,eno)
+
+                    setString(2,name);
+
+                     setInt(3,30000);
+ 
+          CallableStatement - 
+
+                   call
+ 
+Execute:
+ 
+           DDL - boolean
+
+           DML - count - int
+
+           DQL - tabular - resultSet - rows/columns
+
+              -----
+
+boolean execute() - DDL
+
+int executeUpdate() - DML
+
+ResultSet executeQuery() - DQL
+ 
+Process:
+
+      DQL - ResultSet
+
+             single row
+
+                    if(resultSet.next())
+
+             multiple rows
+
+                   while().
+ 
+Close:
+
+    close()
+ 
+import java.util.Scanner;
+
+class TestJDBC
+
+{
+
+      public static void main(String[]  a)
+
+      {
+
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("Enter Employee Details: ENo/Name/Salary/DeptNo");
+
+            int eno = sc.nextInt();
+
+            String name = sc.next();
+
+            int sal = sc.nextInt();
+
+            int dno = sc.nextInt();
+ 
+            try {
+
+           //  1. Load driver
+
+             Class.forName("oracle.jdbc.driver.OracleDriver");
+
+           // 2. Connect
+
+             Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","demoSchema","demoSchema"); 
+
+           // 3. Statements
+
+              String qry = "insert into EmpTB values(?,?,?,?)";
+
+              PreparedStatement ps = con.prepareStatement(qry);
+
+              ps.setInt(1,eno);
+
+              ps.setString(2,name);
+
+              ps.setInt(3,sal);
+
+              ps.setInt(4,dno);
+
+          // 4. Execute
+
+               int count =  ps.executeUpdate();
+
+          //  5. Process result
+
+                if(count ==1)
+
+                     System.out.println("Employee details added");
+
+                else
+
+                     System.out.println("Employee details could not be added");
+
+          // 6. Close Connection
+
+                  con.close();
+
+             }
+
+             catch(SQLException sqlex)
+
+             {
+
+                      System.out.println(sqlex.getMessage());
+
+             }
+
+             finally{
+
+                  System.out.println("Thank you...");
+
+             }
+
+      }
+
+}
+ 
+Monday: 
+
+Webapp
+
+=======
+
+    HTML/CSS/JavaScript
+ 
+Assessment
+
+============
+
+  pattern
+
+  section
+
+  timing
+
+13th 31st
+
+Java fund  --- Springboot
+
+1 week - preparation
+
+assessment slots
+
+	Suresh
+
+1st slot :
+
+2
+ 
+Mettl:
+
+Download ojdbc6.jar : ojdbc6 « o « Jar File Download
+Download ojdbc6.jar : ojdbc6 « o « Jar File Download
+[4:31 PM] Athma M
+TestJDBC.java
+[4:32 PM] Athma M
+package jdbcpkg;
+ 
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+
+import java.sql.PreparedStatement;
+
+import java.sql.SQLException;
+
+import java.util.Scanner;
+ 
+public class TestJDBC {
+ 
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter Employee Details: ENo/Name/Salary/DeptNo");
+
+		int eno = sc.nextInt();
+
+		String name = sc.next();
+
+		int sal = sc.nextInt();
+
+		int dno = sc.nextInt();
+ 
+		try {
+
+			// 1. Load driver
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			// 2. Connect
+
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "wcf13may","wcf13may");
+
+			// 3. Statements
+
+			String qry = "insert into EMPLOYEETB values(?,?,?,?)";
+
+			PreparedStatement ps = con.prepareStatement(qry);
+
+			ps.setInt(1, eno);
+
+			ps.setString(2, name);
+
+			ps.setInt(3, sal);
+
+			ps.setInt(4, dno);
+
+			// 4. Execute
+
+			int count = ps.executeUpdate();
+
+			// 5. Process result
+
+			if (count == 1)
+
+				System.out.println("Employee details added");
+
+			else
+
+				System.out.println("Employee details could not be added");
+
+			// 6. Close Connection
+
+			con.close();
+
+		} catch (Exception sqlex) {
+
+			System.out.println(sqlex.getMessage());
+
+		} finally {
+
+			System.out.println("Thank you...");
+
+		}
+ 
+	}
+ 
+}

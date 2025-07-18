@@ -1,0 +1,59 @@
+create user c##saranwcf identified by saran123 account unlock;
+create user computer identified by system account unlock;
+create user c##system  identified by system account unlock;
+[11:15 AM] Unknown User
+
+
+grant connect,resource,dba to c##wcf13may;
+
+Src:
+
+	Department
+
+		dno,dname,loc,...
+
+        Employee	
+
+		eid,name,salary,dno,...
+
+Target:
+
+DepartmentTB
+
+    |DNO	|DNAME			|LOC		|
+
+   =======================================
+
+    |10	| IT				|Bangalore	|
+
+    |20	|Sales			|Chennai		|
+
+    |30	|Training			|Pune		|
+
+    |40	|Admin			|Kolkata		|
+ 
+EmployeeTB
+
+	| EID	|	NAME	|SALARY		|DNO	|
+
+        ==============================================
+
+	|100		| John		| 30000		|10		|
+
+	|200	| Johns		| 34000		|10		|
+
+	|300	| Johncy		|20000		|		|
+ 
+Create table tableName
+
+(
+
+	col1Name datatype not null default val,
+
+	col1Name datatype,
+
+        ...
+
+        col1Name datatype
+
+)	

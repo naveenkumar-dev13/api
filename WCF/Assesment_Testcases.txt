@@ -1,0 +1,110 @@
+[1:42 PM] 2401058 Rajasekhar Tirupati (Unverified)
+FYI:
+=========== Test cases for CPC ===
+	public static void main(String[] args) {
+		//write code here
+		System.out.println("Started new project CMS ..");
+		CandidateMain candidateMain = new CandidateMain();
+		String name = "";
+		
+		// Test case 1:
+		System.out.println("Test Case 1: Test for Null Value for CandidateBean");
+		String result = candidateMain.addCandidate(null);
+		System.out.println(result);
+		System.out.println();
+		
+		// Test case 2:
+		System.out.println("Test Case 2: Test for Candidate Name to be Empty");
+		name = "";
+		int m1 = 25;
+		int m2 = 35;
+		int m3 = 35;
+		CandidateBean candidBean = new CandidateBean("", name, m1, m2, m3, "", "");
+		result = candidateMain.addCandidate(candidBean);
+		System.out.println(result);
+		System.out.println();
+		
+		// Test case 3:
+		System.out.println("Test Case 3: Test for Candidate Name less than 2 characters");
+		name = "A";
+		candidBean = new CandidateBean("", name, m1, m2, m3, "", "");
+		result = candidateMain.addCandidate(candidBean);
+		System.out.println(result);
+		System.out.println();
+		
+		// Test case 4:
+		System.out.println("Test Case 4: Test for Invalid range of Marks");
+		name = "Raja1";
+		m1 = 15;
+		m2 = 101;
+		m3 = 50;
+		candidBean = new CandidateBean("", name, m1, m2, m3, "", "");
+		result = candidateMain.addCandidate(candidBean);
+		System.out.println(result);
+		System.out.println();
+		
+		// Test case 5:
+		System.out.println("Test Case 5: Test for correct CandidateId generation");
+		name = "Pawan";
+		CandidateDAO objDAO = new CandidateDAO();
+		String testId = objDAO.generateCandidateId(name);
+		System.out.println(testId);
+		System.out.println("Length of ID: " + testId.length());
+		System.out.println();
+		
+		// Test case 6:
+		System.out.println("Test Case 6: Test for checking correct computation of PASS, FAIL and grade");
+		System.out.println("Test for PASS criteria");
+		name = "RajaPass3";
+		m1 = 35;
+		m2 = 30;
+		m3 = 40;
+		candidBean = new CandidateBean("", name, m1, m2, m3, "", "");
+		result = candidateMain.addCandidate(candidBean);
+		System.out.println(result);
+		
+		System.out.println("\nTest for FAIL criteria");
+		name = "RajaFail3";
+		m1 = 34;
+		m2 = 30;
+		m3 = 40;
+		candidBean = new CandidateBean("", name, m1, m2, m3, "", "");
+		result = candidateMain.addCandidate(candidBean);
+		System.out.println(result);
+		
+		System.out.println("\nTest for Grade computation");
+		candidateMain.displayAll("ALL");
+		
+		// Test case 7:
+		System.out.println("Test Case 7: Test for null value generation for different criteria (PASS/FAIL/ALL)");
+		ArrayList<CandidateBean> list = candidateMain.displayAll("FULL");
+		if(null == list)
+		{
+			System.out.println("Test case 7 Pass");
+		}
+		else
+		{
+			System.out.println("Test case 7 Fail");
+		}
+		
+		
+		// Test case 8:
+		System.out.println("Test Case 8: Test the number of records retrieved for different criteria");
+		ArrayList<CandidateBean> listPass = candidateMain.displayAll("PASS");
+		if(7 == listPass.size()) // note: hard coded value, need to update before test
+		{
+			System.out.println("Test case 8 Pass for number of PASS records");
+		}
+		ArrayList<CandidateBean> listFail = candidateMain.displayAll("FAIL");
+		if(4 == listFail.size()) // note: hard coded value, need to update before test
+		{
+			System.out.println("Test case 8 Pass for number of FAIL records");
+		}
+		ArrayList<CandidateBean> listAll =  candidateMain.displayAll("ALL");
+		if(11 == listAll.size()) // note: hard coded value, need to update before test
+		{
+			System.out.println("Test case 8 Pass for number of ALL records");
+		}	
+		
+	}
+=========================
