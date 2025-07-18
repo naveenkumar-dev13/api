@@ -1,0 +1,107 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "React Hooks in Depth",
+      "body": "A comprehensive guide to understanding and using React Hooks like useState and useEffect."
+    },
+    {
+      "id": 2,
+      "title": "Building Responsive UI with Flexbox",
+      "body": "Learn how to design fully responsive layouts using CSS Flexbox with real-world examples."
+    },
+    {
+      "id": 3,
+      "title": "JavaScript ES6 Features",
+      "body": "Explore the most useful ES6 features like arrow functions, destructuring, and template literals."
+    },
+    {
+      "id": 4,
+      "title": "Understanding the Virtual DOM",
+      "body": "An explanation of how the Virtual DOM works and why it's important in modern frontend frameworks."
+    },
+    {
+      "id": 5,
+      "title": "CSS Grid Layout",
+      "body": "Master CSS Grid to create complex, responsive layouts with fewer lines of code."
+    },
+    {
+      "id": 6,
+      "title": "TypeScript for Beginners",
+      "body": "An introduction to using TypeScript in frontend development to catch errors early and write better code."
+    },
+    {
+      "id": 7,
+      "title": "State Management with Redux",
+      "body": "Learn how to manage complex application state using Redux in your React apps."
+    },
+    {
+      "id": 8,
+      "title": "Next.js Fundamentals",
+      "body": "Understand the basics of Next.js and how it enables server-side rendering and static site generation."
+    },
+    {
+      "id": 9,
+      "title": "Optimizing Web Performance",
+      "body": "Tips and techniques to improve your website's loading speed and user experience."
+    },
+    {
+      "id": 10,
+      "title": "Intro to Tailwind CSS",
+      "body": "Learn how to use Tailwind CSS utility classes to build modern and responsive UI designs faster."
+    }
+  ],
+  "items": [
+    { "id": 1, "name": "Apple", "color": "Red" },
+    { "id": 2, "name": "Banana", "color": "Yellow" },
+    { "id": 3, "name": "Carrot", "color": "Orange" },
+    { "id": 4, "name": "Spinach", "color": "Green" },
+    { "id": 5, "name": "Blueberry", "color": "Blue" },
+    { "id": 6, "name": "Grapes", "color": "Purple" },
+    { "id": 7, "name": "Potato", "color": "Brown" },
+    { "id": 8, "name": "Cauliflower", "color": "White" },
+    { "id": 9, "name": "Lemon", "color": "Yellow" },
+    { "id": 10, "name": "Tomato", "color": "Red" },
+    { "id": 11, "name": "Broccoli", "color": "Green" },
+    { "id": 12, "name": "Cucumber", "color": "Green" },
+    { "id": 13, "name": "Mango", "color": "Yellow" },
+    { "id": 14, "name": "Strawberry", "color": "Red" },
+    { "id": 15, "name": "Pineapple", "color": "Brown" },
+    { "id": 16, "name": "Watermelon", "color": "Green" },
+    { "id": 17, "name": "Peach", "color": "Pink" },
+    { "id": 18, "name": "Radish", "color": "White" },
+    { "id": 19, "name": "Pumpkin", "color": "Orange" },
+    { "id": 20, "name": "Beetroot", "color": "Dark Red" },
+    { "id": 21, "name": "Onion", "color": "Purple" },
+    { "id": 22, "name": "Garlic", "color": "White" },
+    { "id": 23, "name": "Cherry", "color": "Red" },
+    { "id": 24, "name": "Pear", "color": "Green" },
+    { "id": 25, "name": "Plum", "color": "Purple" },
+    { "id": 26, "name": "Zucchini", "color": "Green" },
+    { "id": 27, "name": "Cabbage", "color": "Green" },
+    { "id": 28, "name": "Bell Pepper", "color": "Red" },
+    { "id": 29, "name": "Chili", "color": "Green" },
+    { "id": 30, "name": "Avocado", "color": "Dark Green" },
+    { "id": 31, "name": "Lychee", "color": "Red" },
+    { "id": 32, "name": "Guava", "color": "Light Green" },
+    { "id": 33, "name": "Fig", "color": "Purple" },
+    { "id": 34, "name": "Raspberry", "color": "Red" },
+    { "id": 35, "name": "Blackberry", "color": "Black" },
+    { "id": 36, "name": "Sweet Potato", "color": "Purple" },
+    { "id": 37, "name": "Corn", "color": "Yellow" },
+    { "id": 38, "name": "Kale", "color": "Dark Green" },
+    { "id": 39, "name": "Turnip", "color": "White" },
+    { "id": 40, "name": "Eggplant", "color": "Purple" },
+    { "id": 41, "name": "Apricot", "color": "Orange" },
+    { "id": 42, "name": "Jackfruit", "color": "Green" },
+    { "id": 43, "name": "Durian", "color": "Yellow" },
+    { "id": 44, "name": "Tamarind", "color": "Brown" },
+    { "id": 45, "name": "Pomegranate", "color": "Red" },
+    { "id": 46, "name": "Gooseberry", "color": "Green" },
+    { "id": 47, "name": "Passion Fruit", "color": "Purple" },
+    { "id": 48, "name": "Cantaloupe", "color": "Orange" },
+    { "id": 49, "name": "Persimmon", "color": "Orange" },
+    { "id": 50, "name": "Mulberry", "color": "Dark Purple" }
+  ],
+  "user": []
+}
