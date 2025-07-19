@@ -51,57 +51,280 @@
       "body": "Learn how to use Tailwind CSS utility classes to build modern and responsive UI designs faster."
     }
   ],
+  "crud": [
+    {
+      "id": 1,
+      "title": "create",
+      "body": "Create a new resource"
+    },
+    {
+      "id": 2,
+      "title": "read",
+      "body": "Read an existing resource"
+    },
+    {
+      "id": 3,
+      "title": "update",
+      "body": "Update an existing resource"
+    },
+    {
+      "id": 4,
+      "title": "delete",
+      "body": "Delete an existing resource"
+    }
+  
+  ],
   "items": [
-    { "id": 1, "name": "Apple", "color": "Red" },
-    { "id": 2, "name": "Banana", "color": "Yellow" },
-    { "id": 3, "name": "Carrot", "color": "Orange" },
-    { "id": 4, "name": "Spinach", "color": "Green" },
-    { "id": 5, "name": "Blueberry", "color": "Blue" },
-    { "id": 6, "name": "Grapes", "color": "Purple" },
-    { "id": 7, "name": "Potato", "color": "Brown" },
-    { "id": 8, "name": "Cauliflower", "color": "White" },
-    { "id": 9, "name": "Lemon", "color": "Yellow" },
-    { "id": 10, "name": "Tomato", "color": "Red" },
-    { "id": 11, "name": "Broccoli", "color": "Green" },
-    { "id": 12, "name": "Cucumber", "color": "Green" },
-    { "id": 13, "name": "Mango", "color": "Yellow" },
-    { "id": 14, "name": "Strawberry", "color": "Red" },
-    { "id": 15, "name": "Pineapple", "color": "Brown" },
-    { "id": 16, "name": "Watermelon", "color": "Green" },
-    { "id": 17, "name": "Peach", "color": "Pink" },
-    { "id": 18, "name": "Radish", "color": "White" },
-    { "id": 19, "name": "Pumpkin", "color": "Orange" },
-    { "id": 20, "name": "Beetroot", "color": "Dark Red" },
-    { "id": 21, "name": "Onion", "color": "Purple" },
-    { "id": 22, "name": "Garlic", "color": "White" },
-    { "id": 23, "name": "Cherry", "color": "Red" },
-    { "id": 24, "name": "Pear", "color": "Green" },
-    { "id": 25, "name": "Plum", "color": "Purple" },
-    { "id": 26, "name": "Zucchini", "color": "Green" },
-    { "id": 27, "name": "Cabbage", "color": "Green" },
-    { "id": 28, "name": "Bell Pepper", "color": "Red" },
-    { "id": 29, "name": "Chili", "color": "Green" },
-    { "id": 30, "name": "Avocado", "color": "Dark Green" },
-    { "id": 31, "name": "Lychee", "color": "Red" },
-    { "id": 32, "name": "Guava", "color": "Light Green" },
-    { "id": 33, "name": "Fig", "color": "Purple" },
-    { "id": 34, "name": "Raspberry", "color": "Red" },
-    { "id": 35, "name": "Blackberry", "color": "Black" },
-    { "id": 36, "name": "Sweet Potato", "color": "Purple" },
-    { "id": 37, "name": "Corn", "color": "Yellow" },
-    { "id": 38, "name": "Kale", "color": "Dark Green" },
-    { "id": 39, "name": "Turnip", "color": "White" },
-    { "id": 40, "name": "Eggplant", "color": "Purple" },
-    { "id": 41, "name": "Apricot", "color": "Orange" },
-    { "id": 42, "name": "Jackfruit", "color": "Green" },
-    { "id": 43, "name": "Durian", "color": "Yellow" },
-    { "id": 44, "name": "Tamarind", "color": "Brown" },
-    { "id": 45, "name": "Pomegranate", "color": "Red" },
-    { "id": 46, "name": "Gooseberry", "color": "Green" },
-    { "id": 47, "name": "Passion Fruit", "color": "Purple" },
-    { "id": 48, "name": "Cantaloupe", "color": "Orange" },
-    { "id": 49, "name": "Persimmon", "color": "Orange" },
-    { "id": 50, "name": "Mulberry", "color": "Dark Purple" }
+    {
+      "id": 1,
+      "name": "Apple",
+      "color": "Red"
+    },
+    {
+      "id": 2,
+      "name": "Banana",
+      "color": "Yellow"
+    },
+    {
+      "id": 3,
+      "name": "Carrot",
+      "color": "Orange"
+    },
+    {
+      "id": 4,
+      "name": "Spinach",
+      "color": "Green"
+    },
+    {
+      "id": 5,
+      "name": "Blueberry",
+      "color": "Blue"
+    },
+    {
+      "id": 6,
+      "name": "Grapes",
+      "color": "Purple"
+    },
+    {
+      "id": 7,
+      "name": "Potato",
+      "color": "Brown"
+    },
+    {
+      "id": 8,
+      "name": "Cauliflower",
+      "color": "White"
+    },
+    {
+      "id": 9,
+      "name": "Lemon",
+      "color": "Yellow"
+    },
+    {
+      "id": 10,
+      "name": "Tomato",
+      "color": "Red"
+    },
+    {
+      "id": 11,
+      "name": "Broccoli",
+      "color": "Green"
+    },
+    {
+      "id": 12,
+      "name": "Cucumber",
+      "color": "Green"
+    },
+    {
+      "id": 13,
+      "name": "Mango",
+      "color": "Yellow"
+    },
+    {
+      "id": 14,
+      "name": "Strawberry",
+      "color": "Red"
+    },
+    {
+      "id": 15,
+      "name": "Pineapple",
+      "color": "Brown"
+    },
+    {
+      "id": 16,
+      "name": "Watermelon",
+      "color": "Green"
+    },
+    {
+      "id": 17,
+      "name": "Peach",
+      "color": "Pink"
+    },
+    {
+      "id": 18,
+      "name": "Radish",
+      "color": "White"
+    },
+    {
+      "id": 19,
+      "name": "Pumpkin",
+      "color": "Orange"
+    },
+    {
+      "id": 20,
+      "name": "Beetroot",
+      "color": "Dark Red"
+    },
+    {
+      "id": 21,
+      "name": "Onion",
+      "color": "Purple"
+    },
+    {
+      "id": 22,
+      "name": "Garlic",
+      "color": "White"
+    },
+    {
+      "id": 23,
+      "name": "Cherry",
+      "color": "Red"
+    },
+    {
+      "id": 24,
+      "name": "Pear",
+      "color": "Green"
+    },
+    {
+      "id": 25,
+      "name": "Plum",
+      "color": "Purple"
+    },
+    {
+      "id": 26,
+      "name": "Zucchini",
+      "color": "Green"
+    },
+    {
+      "id": 27,
+      "name": "Cabbage",
+      "color": "Green"
+    },
+    {
+      "id": 28,
+      "name": "Bell Pepper",
+      "color": "Red"
+    },
+    {
+      "id": 29,
+      "name": "Chili",
+      "color": "Green"
+    },
+    {
+      "id": 30,
+      "name": "Avocado",
+      "color": "Dark Green"
+    },
+    {
+      "id": 31,
+      "name": "Lychee",
+      "color": "Red"
+    },
+    {
+      "id": 32,
+      "name": "Guava",
+      "color": "Light Green"
+    },
+    {
+      "id": 33,
+      "name": "Fig",
+      "color": "Purple"
+    },
+    {
+      "id": 34,
+      "name": "Raspberry",
+      "color": "Red"
+    },
+    {
+      "id": 35,
+      "name": "Blackberry",
+      "color": "Black"
+    },
+    {
+      "id": 36,
+      "name": "Sweet Potato",
+      "color": "Purple"
+    },
+    {
+      "id": 37,
+      "name": "Corn",
+      "color": "Yellow"
+    },
+    {
+      "id": 38,
+      "name": "Kale",
+      "color": "Dark Green"
+    },
+    {
+      "id": 39,
+      "name": "Turnip",
+      "color": "White"
+    },
+    {
+      "id": 40,
+      "name": "Eggplant",
+      "color": "Purple"
+    },
+    {
+      "id": 41,
+      "name": "Apricot",
+      "color": "Orange"
+    },
+    {
+      "id": 42,
+      "name": "Jackfruit",
+      "color": "Green"
+    },
+    {
+      "id": 43,
+      "name": "Durian",
+      "color": "Yellow"
+    },
+    {
+      "id": 44,
+      "name": "Tamarind",
+      "color": "Brown"
+    },
+    {
+      "id": 45,
+      "name": "Pomegranate",
+      "color": "Red"
+    },
+    {
+      "id": 46,
+      "name": "Gooseberry",
+      "color": "Green"
+    },
+    {
+      "id": 47,
+      "name": "Passion Fruit",
+      "color": "Purple"
+    },
+    {
+      "id": 48,
+      "name": "Cantaloupe",
+      "color": "Orange"
+    },
+    {
+      "id": 49,
+      "name": "Persimmon",
+      "color": "Orange"
+    },
+    {
+      "id": 50,
+      "name": "Mulberry",
+      "color": "Dark Purple"
+    }
   ],
   "user": []
 }
