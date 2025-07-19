@@ -17,7 +17,6 @@ const QueryByClick = () => {
     queryFn: () => fetchPost(),
     enabled: false,
   });
-  console.log(data);
 
   if (error) return <p>{error.message}</p>;
   if (isLoading) return <p className="text-2xl">Loading...</p>;
@@ -27,16 +26,15 @@ const QueryByClick = () => {
       <h1 className="text-2xl font-medium mb-4">Query Fetch</h1>
       {data?.data.map((post: Post) => (
         <ul className="p-2 bg-teal-50" key={post.id}>
-          <Link to={`/query/${post.id}`}>
-          <li className="hover:bg-red-50 transition-all duration-300 cursor-pointer p-1">
-            {post.title}
-          </li>
-          </Link>
+        
+            <li className="hover:bg-red-50 transition-all duration-300 cursor-pointer p-1">
+              {post.title}
+            </li>
         </ul>
       ))}
       <button
-        onClick={()=>refetch()}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => refetch()}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
       >
         refresh
       </button>

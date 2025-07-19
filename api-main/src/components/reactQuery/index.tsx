@@ -5,6 +5,7 @@ import RegularFetch from "./regularFetch";
 import QueryFetch from "./queryFetch";
 import QueryByClick from "./queryByClick";
 import QueryById from "./queryById";
+import QueryPage from "./QueryPage";
 
 function ReactQuery() {
   return (
@@ -23,7 +24,13 @@ function ReactQuery() {
           to="/queryClick"
           className="p-2 transition-colors duration-150"
         >
-          Query Click by Fetch
+          Query Fetch By Click
+        </NavLink>
+        <NavLink
+          to="/pagination"
+          className="p-2 transition-colors duration-150"
+        >
+          Pagination
         </NavLink>
       </nav>
       <Routes>
@@ -32,6 +39,7 @@ function ReactQuery() {
         <Route path="/query" element={<QueryFetch />} />
         <Route path="/query/:id" element={<QueryById />} />
         <Route path="/queryClick" element={<QueryByClick />} />
+        <Route path="/pagination" element={<QueryPage />} />
       </Routes>
     </BrowserRouter>
   );

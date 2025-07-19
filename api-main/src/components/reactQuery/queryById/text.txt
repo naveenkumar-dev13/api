@@ -1,0 +1,5 @@
+    enabled: !!id,
+    
+     Only run the query when the id is present
+     Prevents the query from running when the component first mounts
+     and the id is still undefined
