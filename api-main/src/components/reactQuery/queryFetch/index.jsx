@@ -10,7 +10,7 @@ function QueryFetch() {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["posts"],
     queryFn: () => fetchPost(),
-    enabled: false, 
+    enabled: false,
   });
 
   if (error) return <p>{error.message}</p>;
@@ -19,7 +19,7 @@ function QueryFetch() {
   return (
     <div className="p-5 container mx-auto">
       <h1 className="text-2xl font-medium mb-4">Query Fetch</h1>
-      {data.data.map((post) => (
+      {data?.data.map((post) => (
         <ul className="p-2 bg-teal-50" key={post.id}>
           <Link to={`/query/${post.id}`}>
             <li className="hover:bg-red-50 transition-all duration-300 cursor-pointer p-1">

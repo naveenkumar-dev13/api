@@ -1,0 +1,34 @@
+infinite scroll by button 
+
+
+fetchNextPage -->      
+const { data, fetchNextPage ,hasNextPage } = useInfiniteQuery({
+    // 1. key
+    queryKey: ["posts"],
+
+    // 2.   data
+    queryFn: fetchPost,
+
+    // 3.  
+    initialPageParam: 1,
+
+    // 4.  next page
+    getNextPageParam: (lastPage, allPages) => {
+      // 5.
+      if (allPages.length < 5) return allPages.length + 1;
+      else return undefined;
+    },
+  });
+
+ npm i react-intersection-observer
+
+
+   const { ref, inView } = useInView();
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  })
+hasNextPage-condition 
+  ref -- reference
+  inView -- >boolean

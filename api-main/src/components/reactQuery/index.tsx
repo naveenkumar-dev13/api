@@ -6,6 +6,8 @@ import QueryFetch from "./queryFetch";
 import QueryByClick from "./queryByClick";
 import QueryById from "./queryById";
 import QueryPage from "./QueryPage";
+import InfiniteScroll from "./infiniteScroll";
+import QueryScroll from "./queryScroll";
 
 function ReactQuery() {
   return (
@@ -32,6 +34,18 @@ function ReactQuery() {
         >
           Pagination
         </NavLink>
+        <NavLink
+          to="/infinite-scroll-button"
+          className="p-2 transition-colors duration-150"
+        >
+          Infinite scroll by button
+        </NavLink>
+        <NavLink
+          to="/infinite-scroll"
+          className="p-2 transition-colors duration-150"
+        >
+          Infinite scroll 
+        </NavLink>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -40,6 +54,8 @@ function ReactQuery() {
         <Route path="/query/:id" element={<QueryById />} />
         <Route path="/queryClick" element={<QueryByClick />} />
         <Route path="/pagination" element={<QueryPage />} />
+        <Route path="/infinite-scroll-button" element={<InfiniteScroll />} />
+        <Route path="/infinite-scroll" element={<QueryScroll />} />
       </Routes>
     </BrowserRouter>
   );
