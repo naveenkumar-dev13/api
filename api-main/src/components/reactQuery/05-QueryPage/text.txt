@@ -1,0 +1,15 @@
+ placeholderData: keepPreviousData,
+
+    By setting `placeholderData` to `keepPreviousData`, we ensure that
+    React Query will keep the previous data in the cache while it fetches
+    the new data. This means that if the user navigates from page 1 to page 2,
+    the data from page 1 will remain in the cache until the new data from page 2
+    is received. This helps to prevent a ** flash ** of "no data" while the new data
+    is being fetched.
+
+    ** highlight
+
+
+
+
+    

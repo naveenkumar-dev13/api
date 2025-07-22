@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
-import Home from "./home";
-import RegularFetch from "./regularFetch";
-import QueryFetch from "./queryFetch";
-import QueryByClick from "./queryByClick";
-import QueryById from "./queryById";
-import QueryPage from "./QueryPage";
-import InfiniteScroll from "./infiniteScrollByButton";
-import QueryScroll from "./queryScroll";
-import UseQueryies from "../useQueryies";
+import Home from "./01-home";
+import RegularFetch from "./02-regularFetch";
+import QueryFetch from "./03-queryFetch";
+import QueryByClick from "./04-queryByClick";
+import QueryById from "./04-queryById";
+import QueryPage from "./05-QueryPage";
+import InfiniteScroll from "./06-infiniteScrollByButton";
+import QueryScroll from "./07-queryScroll";
+import UseQueryies from "./08-useQueryies";
 // import UseQueryies from "./useQueryies";
 
 function ReactQuery() {
