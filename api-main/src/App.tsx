@@ -3,10 +3,9 @@ import ReactQuery from "./components/reactQuery";
 import Zustand from "./components/zustand";
 
 const App: React.FC = () => {
-
   return (
-    <div>
-      <Zustand/>
+    <div className="min-h-screen flex items-center justify-center">
+      <Zustand />
       {/* <ReactQuery /> */}
     </div>
   );
