@@ -1,5 +1,5 @@
 import React from "react";
-import useBearStore from "../store/useStore";
+import useBearStore from "../../store/useStore";
 
 function Counter() {
   const { count, inc, dec, reset } = useBearStore();
@@ -10,7 +10,7 @@ function Counter() {
         onClick={inc}
         className="mt-2 bg-green-500 px-4 py-2 text-white rounded"
       >
-        Add Bear {}
+        Bear {}
       </button>
       <button
         onClick={dec}

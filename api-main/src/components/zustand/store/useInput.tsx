@@ -8,9 +8,6 @@ interface InputStore {
 
 export const useInput = create<InputStore>((set, get) => ({
   value: "",
-  setValue: () => {
-    const { value } = get();
-    set({ value: value });
-  },
+  setValue: (val) => set({ value: val }),
   reset: () => set({ value: "" }),
 }));

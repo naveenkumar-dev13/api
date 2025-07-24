@@ -7,12 +7,10 @@ interface ThemeColorState {
 
 const useToggleStore = create<ThemeColorState>((set, get) => ({
   Toggle: false,
-  setToggle:()=>{
+  setToggle: () => {
     const { Toggle } = get();
     set({ Toggle: !Toggle });
-  }
-//   setToggle: () => set({ Toggle: !get().Toggle }),
-
+  },
 }));
 
 export default useToggleStore;

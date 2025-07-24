@@ -4,24 +4,24 @@ interface BearState {
   count: number;
   inc: () => void;
   dec: () => void;
-  reset:()=>void
-} 
+  reset: () => void;
+}
 
 const useBearStore = create<BearState>((set, get) => ({
   count: 0,
   inc: () => {
     const { count } = get();
-    if(count ===9 ) return
+    if (count === 9) return;
     set({ count: count + 1 });
   },
   dec: () => {
     const { count } = get();
-    if(count ===0 ) return
+    if (count === 0) return;
     set({ count: count - 1 });
   },
-  reset:()=>{
+  reset: () => {
     set({ count: 0 });
-  }
+  },
 }));
 
 export default useBearStore;
