@@ -1,3 +1,4 @@
+
 import { create } from "zustand";
 
 interface CounterStore {
@@ -5,7 +6,7 @@ interface CounterStore {
   loading: boolean;
   incrementDelay: () => Promise<void>;
 }
-
+//  const [loading, setloading] =useState(false);
 export const useCounterStore = create<CounterStore>((set, get) => ({
   count: 0,
   loading: false,
