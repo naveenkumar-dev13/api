@@ -45,7 +45,7 @@ export const useBankApp = create<BankStore>()(
       },
     }),
     {
-      name: "bank-storage", 
+      name: "bank-storage",
     }
   )
 );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useBankApp } from "../../store/useBankApp";
+import { useBankApp } from "../store/useBankApp";
 
 const BankDashboard = () => {
   const [amount, setAmount] = useState("");
