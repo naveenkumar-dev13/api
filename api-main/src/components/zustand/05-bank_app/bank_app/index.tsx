@@ -4,8 +4,15 @@ import { useBankApp } from "../../store/useBankApp";
 const BankDashboard = () => {
   const [amount, setAmount] = useState("");
   const [name, setName] = useState("");
-  const { balance, deposit, withdraw, reset, customer, setCustomerName } =
-    useBankApp();
+  const {
+    balance,
+    deposit,
+    withdraw,
+    reset,
+    customer,
+    setCustomerName,
+    accountNumber,
+  } = useBankApp();
 
   return (
     <div className="p-6 max-w-md mx-auto bg-white shadow-md rounded">
@@ -33,6 +40,9 @@ const BankDashboard = () => {
           </div>
           <div className="mb-4">
             <p className="text-xl font-semibold">Current Name :{customer}</p>
+            <p className="text-sm text-gray-600">
+              🔢 Account No: <strong>{accountNumber}</strong>
+            </p>
           </div>
 
           <div className="flex gap-2 mb-4">
@@ -64,20 +74,10 @@ const BankDashboard = () => {
           </div>
           <div className="flex gap-4">
             <button
-              className="bg-gray-500 text-white w-full py-2 rounded"
+              className="bg-blue-500 text-white w-full py-2 rounded"
               onClick={reset}
             >
-              Reset Account
-            </button>
-
-            <button
-              className="bg-gray-500 text-white w-full py-2 rounded"
-              onClick={() =>{
-                 setCustomerName("");
-                 setName("");
-              }}
-            >
-              Reset Name
+              logout
             </button>
           </div>
         </div>

@@ -6,11 +6,13 @@ import ThemeToggle from "./02-colorTheme";
 
 function Zustand() {
   return (
-    <div className="flex flex-col gap-4 ">
-      <Counter />
-      <CounterAsync />
-      <ThemeToggle />
-      <BankDashboard />
+    <div className="">
+      <div className="">
+        {/* <Counter />
+        <CounterAsync />
+        <ThemeToggle /> */}
+        <BankDashboard />
+      </div>
     </div>
   );
 }

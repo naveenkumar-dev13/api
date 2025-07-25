@@ -4,7 +4,7 @@ import Zustand from "./components/zustand";
 
 const App: React.FC = () => {
   return (
-    <div className="bg-gray-500 h-screen flex items-center justify-center">
+    <div className=" h-screen flex items-center justify-center">
       <Zustand />
       {/* <ReactQuery /> */}
     </div>
